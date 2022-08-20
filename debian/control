@@ -1,0 +1,30 @@
+Source: alternc-sympa
+Section: admin
+Priority: optional
+Maintainer: Benjamin Sonntag <benjamin@octopuce.fr>
+Build-Depends: debhelper (>= 11), po-debconf
+Standards-Version: 4.6.1
+
+Package: alternc-sympa
+Priority: optional
+Section: admin
+Architecture: all
+Depends: sympa, mysql-client | mariadb-client, debconf, alternc (>> 3.2.10), php5-cli | php-cli | php7.0-cli | php7.1-cli, ${misc:Depends}
+Description: Sympa module for AlternC
+ AlternC is a mutualized hosting software manager for Linux.
+ It allows you to manage your websites, domains, ftp, emails, aliases,
+ web statistics, mailing-lists, etc.
+ .
+ This package is an optional module that adds mailing-lists management
+ via the Sympa server to the virtual desktop. 
+ .
+ More information on https://www.alternc.com/
+Description-fr.UTF-8: Module AlternC pour AlternC
+ AlternC est un logiciel d'hébergement mutualisé pour serveur Linux.
+ Il permet de gérer les sites web, domaines, ftp, emails, alias,
+ statistiques web, listes de discussions, etc.
+ .
+ Ce paquet est un module optionnel qui permet aux utilisateurs
+ de gérer des listes de diffusion et discussions via Sympa dans AlternC.
+ .
+ Pour plus d'informations, consultez https://www.alternc.com/

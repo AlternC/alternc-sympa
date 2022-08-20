@@ -1,0 +1,7 @@
+alternc-mailman.postrm.debhelper
+alternc-mailman.substvars
+files
+alternc-mailman
+alternc-mailman.debhelper.log
+postinst
+postrm

@@ -1,0 +1,189 @@
+# Alternc-sympa translation file
+# Copyright (C) 2022 AlternC Team
+# This file is distributed under the same license as the AlternC package.
+# Benjamin Sonntag <benjamin@octopuce.fr>, 2022
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: AlternC 3.0\n"
+"Report-Msgid-Bugs-To: i18n@alternc.org\n"
+"POT-Creation-Date: 2022-08-20 18:12+0200\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../admin/menu_sympa.php:33
+msgid "Mailing Lists"
+msgstr ""
+
+#: ../admin/menu_sympa.php:35
+msgid "(with Sympa)"
+msgstr ""
+
+#: ../admin/sympa_robots.php:30
+msgid "Pending creation"
+msgstr ""
+
+#: ../admin/sympa_robots.php:31
+msgid "Pending destruction"
+msgstr ""
+
+#: ../admin/sympa_robots.php:37
+msgid ""
+"No domain is installed on your account, you cannot create any mailing list!"
+msgstr ""
+
+#: ../admin/sympa_robots.php:39 ../admin/sympa_robots.php:58
+#: ../class/m_sympa.php:35 ../class/m_sympa.php:288
+msgid "Sympa Mailing lists"
+msgstr ""
+
+#: ../admin/sympa_robots.php:67
+msgid "Setup a domain for Sympa mailing-lists"
+msgstr ""
+
+#: ../admin/sympa_robots.php:75
+msgid "Admin web interface"
+msgstr ""
+
+#: ../admin/sympa_robots.php:75
+msgid "Domain Name"
+msgstr ""
+
+#: ../admin/sympa_robots.php:75
+msgid "Domain Status"
+msgstr ""
+
+#: ../admin/sympa_robots.php:86
+msgid ""
+"This domain lists management is pending deletion, you can't do anything on it"
+msgstr ""
+
+#: ../admin/sympa_robots.php:88
+msgid "sympa_status_"
+msgstr ""
+
+#: ../admin/sympa_robots.php:89
+msgid "Delete"
+msgstr ""
+
+#: ../admin/sympa_robots_add.php:37
+msgid ""
+"You currently have no unused domain for which you can host sympa robots."
+msgstr ""
+
+#: ../admin/sympa_robots_add.php:43
+msgid "Sympa Mailing-lists, setup of a domain name"
+msgstr ""
+
+#: ../admin/sympa_robots_add.php:49
+msgid ""
+"If you want to use a domain name to host Sympa mailing-lists, you need to "
+"setup that domain here first. You can use any domain whose emails are hosted "
+"on your account to host mailing lists. You will also need a subdomain to "
+"host your web interface for those lists (eg: lists.example.com)."
+msgstr ""
+
+#: ../admin/sympa_robots_add.php:56
+msgid "Which domain name will host the lists?"
+msgstr ""
+
+#: ../admin/sympa_robots_add.php:59
+msgid ""
+"Which subdomain will be used for web access to the Mailing-lists management "
+"interface?"
+msgstr ""
+
+#: ../admin/sympa_robots_add.php:60
+msgid "lists"
+msgstr ""
+
+#: ../admin/sympa_robots_add.php:62
+msgid "Email of the domain lists super-administrators (1 per line)"
+msgstr ""
+
+#: ../admin/sympa_robots_add.php:66
+msgid "Setup that domain to host Sympa Mailing-lists."
+msgstr ""
+
+#: ../admin/sympa_robots_add.php:67
+msgid "Cancel"
+msgstr ""
+
+#: ../admin/sympa_robots_doadd.php:41
+msgid ""
+"The Sympa domain has been setup. Please wait a few minutes before accessing "
+"its web interface."
+msgstr ""
+
+#: ../class/m_sympa.php:46
+msgid "sympa_status_CREATE"
+msgstr ""
+
+#: ../class/m_sympa.php:46
+msgid "sympa_status_DELETE"
+msgstr ""
+
+#: ../class/m_sympa.php:46
+msgid "sympa_status_DELETING"
+msgstr ""
+
+#: ../class/m_sympa.php:46
+msgid "sympa_status_OK"
+msgstr ""
+
+#: ../class/m_sympa.php:46
+msgid "sympa_status_REGENERATE"
+msgstr ""
+
+#: ../class/m_sympa.php:127
+msgid "This list robot does not exist"
+msgstr ""
+
+#: ../class/m_sympa.php:148
+msgid ""
+"You are not allowed to use sympa mailing-list. Contact your administrator if "
+"needed"
+msgstr ""
+
+#: ../class/m_sympa.php:155
+msgid "Domain not found"
+msgstr ""
+
+#: ../class/m_sympa.php:159
+msgid "The domain's email is not hosted here"
+msgstr ""
+
+#: ../class/m_sympa.php:165
+msgid "This domain is already setup for Sympa"
+msgstr ""
+
+#: ../class/m_sympa.php:172
+msgid "Web Domain not found"
+msgstr ""
+
+#: ../class/m_sympa.php:177
+msgid "The sub-domain name is invalid"
+msgstr ""
+
+#: ../class/m_sympa.php:189
+msgid "The super-admin list is empty or invalid. Please check"
+msgstr ""
+
+#: ../class/m_sympa.php:198
+msgid ""
+"Can't set the web sub-domain, please check this name is not already used."
+msgstr ""
+
+#: ../class/m_sympa.php:229
+msgid "This robot does not exist"
+msgstr ""
+
+#: ../class/m_sympa.php:233
+msgid "This domain has pending action, you cannot delete it"
+msgstr ""
+
+#: ../class/m_sympa.php:247
+msgid "Mailing lists (Sympa)"
+msgstr ""

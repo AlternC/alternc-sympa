@@ -1,0 +1,7 @@
+/build-stamp
+debian/alternc-sympa
+debian/alternc-sympa.debhelper.log
+debian/alternc-sympa.postrm.debhelper
+debian/alternc-sympa.substvars
+debian/files
+bureau/locales/*/LC_MESSAGES/sympa.po~
