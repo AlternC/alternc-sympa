@@ -19,4 +19,8 @@ we don't have the update_sympa.sh cron yet ;) so no robot is really created / de
 
 also, please search for "TODO" in the code
 
+If we can't entirely manage the list of lists in a domain via AlternC
+we will need to check that there are no conflicts with existing mail box/alias for the same domain
+in that case, telling the user seems useful ;) 
+
 

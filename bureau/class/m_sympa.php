@@ -215,6 +215,107 @@ class m_sympa {
 
 
     /* ----------------------------------------------------------------- */
+    /** This function should be launched by cron as root every once in a while 
+     * (1min is fine as long as you use a flock) 
+     * it is creating or deleting virtual robots as required.
+     * it is logging into syslog as AlternC-Sympa
+     */
+    function cron_update() {
+        global $db;
+        $somethingchanged=false;
+        openlog("[AlternC-Sympa]",null,LOG_USER);
+        
+        // Robots creation
+        $db->query("SELECT * FROM sympa WHERE sympa_action='CREATE';");
+        while ($db->next_record()) {
+            $creates[]=$db->Record;
+        }
+        foreach($creates as $create) {
+            $weburl = $create["websub"].(($create["websub"])?".":"").$create["web"];
+            syslog(LOG_INFO,"Creating Sympa virtual robot for host ".$create["mail"]." and web interface https://".$weburl);
+
+            mkdir("/etc/sympa/".$create["mail"],0770);
+            chown("/etc/sympa/".$create["mail"],"sympa");
+            chgrp("/etc/sympa/".$create["mail"],"sympa");
+            mkdir("/var/lib/sympa/list_data/".$create["mail"],0770);
+            chown("/var/lib/sympa/list_data/".$create["mail"],"sympa");
+            chgrp("/var/lib/sympa/list_data/".$create["mail"],"sympa");
+            
+            $listmasters = implode(",",explode("\n",$create["listmasters"]));
+            file_put_contents("/etc/sympa/".$create["mail"]."/robot.conf","#
+# Sympa robot configuration for ".$create["mail"]."
+#
+domain ".$create["mail"]."
+listmaster ".$listmasters."
+wwsympa_url https:///".$weburl."/wws/
+title   Sympa Mailing List Service
+default_home  home
+create_list listmaster
+");
+            $somethingchanged=true;
+            $code="OK";
+            $result="";
+            $db->query("UPDATE sympa SET sympa_action='$code', sympa_result='$result' WHERE id=".$create["id"].";"); 
+        }
+
+        // Robots destruction
+        $db->query("SELECT * FROM sympa WHERE sympa_action='DELETE';");
+        while ($db->next_record()) {
+            $deletes[]=$db->Record;
+        }
+        foreach($deletes as $delete) {
+            $weburl = $delete["websub"].(($delete["websub"])?".":"").$delete["web"];
+            syslog(LOG_INFO,"Deleting Sympa virtual robot for host ".$delete["mail"]." and web interface https://".$weburl);
+
+            exec("rm -rf ".escapeshellarg("/etc/sympa/".$delete["mail"]));
+            exec("rm -rf ".escapeshellarg("/var/lib/sympa/list_data/".$delete["mail"]));
+            
+            $somethingchanged=true;
+            $db->query("DELETE FROM sympa WHERE id=".$delete["id"].";"); 
+        }
+        
+        
+        if ($somethingchanged) {
+            $this->restart_sympa();
+        }
+        
+    }
+
+
+    /* ----------------------------------------------------------------- */
+    /** Restart all sympa services
+     * MUST be launched as root of course
+     */
+    function restart_sympa() {
+            putenv("PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin");
+
+            $out=[];
+            exec("service sympa restart 2>&1",$out,$res);
+            if ($res!=0) {
+                syslog(LOG_ERR,"Can't restart sympa, please check, output was\n".implode("\n",$out));
+            } else {
+                syslog(LOG_INFO,"Sympa restarted after a robot creation / destruction");
+            }
+
+            $out=[];
+            exec("service sympasoap restart 2>&1",$out,$res);
+            if ($res!=0) {
+                syslog(LOG_ERR,"Can't restart sympasoap, please check, output was\n".implode("\n",$out));
+            } else {
+                syslog(LOG_INFO,"Sympasoap restarted after a robot creation / destruction");
+            }
+
+            $out=[];
+            exec("service wwsympa restart 2>&1",$out,$res);
+            if ($res!=0) {
+                syslog(LOG_ERR,"Can't restart wwsympa, please check, output was\n".implode("\n",$out));
+            } else {
+                syslog(LOG_INFO,"WWSympa restarted after a robot creation / destruction");
+            }
+    }
+
+    
+    /* ----------------------------------------------------------------- */
     /** Delete a virtual robot
      * @param $id integer the id number of the robot in alternc's database
      * @return boolean TRUE if the robot has been deleted or FALSE if an error occured
