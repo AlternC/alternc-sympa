@@ -173,6 +173,11 @@ restart)
     $0 stop && $0 start
     echo
     ;;
+force-reload)
+    echo "Restarting SympaSOAP: "
+    $0 stop && $0 start
+    echo
+    ;;
 *)
     echo "Usage: $0 {start|stop|status|restart}"
     exit 1

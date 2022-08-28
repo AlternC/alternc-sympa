@@ -3,17 +3,19 @@
 case "$1" in
   configure)
 
-    # configure the quota for "sympa" (default disabled)
-    /usr/lib/alternc/quota_init sympa 0 
-
     echo "Installing mysql table"
     mysql --defaults-file=/etc/alternc/my.cnf < /usr/share/alternc/install/sympa.sql
-    
+
+    # Create quota for all users "sympa" with value 0
+    mysql --defaults-file=/etc/alternc/my.cnf -Bse "INSERT IGNORE INTO quotas (uid,name,total) SELECT uid,'sympa', 0 FROM membres;" || true
+
     # Create default quota "sympa" with value 0
-    mysql --defaults-file=/etc/alternc/my.cnf -Bse "INSERT IGNORE INTO defquotas VALUES ('sympa', 0, 'default')" || true
+    mysql --defaults-file=/etc/alternc/my.cnf -Bse "INSERT IGNORE INTO defquotas (quota,value,type) VALUES ('sympa', 0, 'default')" || true
 
     echo "$2" >/var/lib/alternc/backups/alternc-sympa-lastversion
 
+    update-rc.d wwsympa defaults
+    update-rc.d sympasoap defaults
     
     echo -e "\033[31m**********************************************"
     echo "*                                            *"

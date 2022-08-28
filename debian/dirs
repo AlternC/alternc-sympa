@@ -1,10 +1,12 @@
 etc/alternc/templates/apache2
+etc/init.d
 etc/sympa
 usr/lib/alternc/install.d
-usr/share/doc/alternc-sympa
+usr/share/alternc/install
 usr/share/alternc/panel/admin
 usr/share/alternc/panel/class
 usr/share/alternc/panel/locales/en_US/LC_MESSAGES
 usr/share/alternc/panel/locales/fr_FR/LC_MESSAGES
+usr/share/doc/alternc-sympa
 etc/apache2/conf.d
 var/lib/alternc/backups

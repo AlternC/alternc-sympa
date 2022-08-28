@@ -3,15 +3,14 @@ Section: admin
 Priority: optional
 Maintainer: Benjamin Sonntag <benjamin@octopuce.fr>
 Build-Depends: debhelper (>= 11), po-debconf
-Standards-Version: 4.6.1
+Standards-Version: 4.5.1
 
 Package: alternc-sympa
 Priority: optional
 Section: admin
 Architecture: all
-Depends: sympa, spawn-fcgi,
- mysql-client | mariadb-client, debconf, alternc (>> 3.2.10),
- php5-cli | php-cli | php7.0-cli | php7.1-cli,
+Depends: sympa, spawn-fcgi, php-cli,
+ default-mysql-client, debconf, alternc (>> 3.2.10),
  ${misc:Depends}
 Description: Sympa module for AlternC
  AlternC is a mutualized hosting software manager for Linux.

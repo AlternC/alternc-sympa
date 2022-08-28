@@ -1,4 +1,5 @@
-/build-stamp
+debian/.debhelper
+debian/debhelper-build-stamp
 debian/alternc-sympa
 debian/alternc-sympa.debhelper.log
 debian/alternc-sympa.postrm.debhelper

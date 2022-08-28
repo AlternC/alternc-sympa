@@ -48,7 +48,7 @@ dmarc_protection_mode dmarc_reject
         echo "main.cf transport_maps OK"
     else
         echo "Configuring transport_maps in main.cf"
-        sed -i -e 's#transport_maps((\s|=).*)#transport_maps\1 hash:/etc/mail/sympa/virtual_aliases hash:/etc/sympa/robots.aliases#' /etc/postfix/main.cf
+        sed -i -e 's#transport_maps\(.*\)#transport_maps\1 hash:/etc/mail/sympa/virtual_aliases hash:/etc/sympa/robots.aliases#' /etc/postfix/main.cf
     fi
 
     if grep -q "^virtual_mailbox_maps.*hash:/etc/mail/sympa/virtual_aliases.*hash:/etc/sympa/robots.aliases" /etc/postfix/main.cf
@@ -56,7 +56,7 @@ dmarc_protection_mode dmarc_reject
         echo "main.cf virtual_mailbox_maps OK"
     else
         echo "Configuring virtual_mailbox_maps in main.cf"
-        sed -i -e 's#virtual_mailbox_maps((\s|=).*)#virtual_mailbox_maps\1 hash:/etc/mail/sympa/virtual_aliases hash:/etc/sympa/robots.aliases#' /etc/postfix/main.cf
+        sed -i -e 's#virtual_mailbox_maps\(.*\)#virtual_mailbox_maps\1 hash:/etc/mail/sympa/virtual_aliases hash:/etc/sympa/robots.aliases#' /etc/postfix/main.cf
     fi
     
     if grep -q "^sympa_destination_recipient_limit" /etc/postfix/main.cf
@@ -75,22 +75,27 @@ dmarc_protection_mode dmarc_reject
         echo "sympabounce_destination_recipient_limit = 1" >> /etc/postfix/main.cf
     fi
 
-    # now postfix master.cf:
-    if grep -q "^sympa\s" /etc/postfix/master.cf
-    then
-        echo "master.cf sympa transport OK"
-    else
-        echo "adding sympa transport to master.cf"
-        echo 'sympa     unix  -       n       n       -       -       pipe flags=R user=sympa argv=/usr/lib/sympa/bin/queue ${recipient}' >>/etc/postfix/master.cf
-    fi
-    if grep -q "^sympabounce\s" /etc/postfix/master.cf
-    then
-        echo "master.cf sympaboune transport OK"
-    else
-        echo "adding sympabounce transport to master.cf"
-        echo 'sympabounce unix -      n       n       -       -       pipe flags=R user=sympa argv=/usr/lib/sympa/bin/bouncequeue ${recipient}' >>/etc/postfix/master.cf
-    fi
+    for file in /etc/postfix/master.cf /etc/alternc/templates/postfix/master.cf
+    do
 
+        # now postfix master.cf:
+        if grep -q "^sympa\s" $file
+        then
+            echo "$file sympa transport OK"
+        else
+            echo "adding sympa transport to $file"
+            echo 'sympa     unix  -       n       n       -       -       pipe flags=R user=sympa argv=/usr/lib/sympa/bin/queue ${recipient}' >> $file
+        fi
+
+        if grep -q "^sympabounce\s" $file
+        then
+            echo "$file sympaboune transport OK"
+        else
+            echo "adding sympabounce transport to $file"
+            echo 'sympabounce unix -      n       n       -       -       pipe flags=R user=sympa argv=/usr/lib/sympa/bin/bouncequeue ${recipient}' >> $file
+        fi
+    done
+    
     touch /etc/mail/sympa/virtual_aliases
     postmap /etc/mail/sympa/virtual_aliases 
     chown sympa:sympa /etc/mail/sympa/virtual_aliases*
