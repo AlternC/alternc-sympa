@@ -1,0 +1,115 @@
+#!/bin/bash
+
+# ----------------------------------------------------------------------
+# AlternC - Web Hosting System
+# Copyright (C) 2000-2022 by the AlternC Development Team.
+# https://alternc.org/
+# ----------------------------------------------------------------------
+# LICENSE
+#
+# This program is free software; you can redistribute it and/or
+# modify it under the terms of the GNU General Public License (GPL)
+# as published by the Free Software Foundation; either version 2
+# of the License, or (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# To read the license please visit http://www.gnu.org/copyleft/gpl.html
+# ----------------------------------------------------------------------
+# Purpose of file: Install sympa conf files in sympa/postfix etc. 
+# ----------------------------------------------------------------------
+
+# called with startup, upgrade, templates, apache2, before-reload, end
+
+if [ "$1" = "upgrade" ]
+then
+
+    # deploy wwsympa & sympasoap init scripts
+    update-rc.d wwsympa defaults
+    update-rc.d sympasoap defaults
+    # we remove the sympa apache configuration: we will use vhosts configuration instead    
+    rm /etc/apache2/conf-enabled/sympa.conf
+
+    # we configure sympa
+    sed -i -e "/^sendmail\s/d" -e "/^sendmail_aliases\s/d" -e "/^aliases_program\s/d" -e "/^aliases_db_type\s/d" -e "/^dmarc_protection_mode\s/d" /etc/sympa/sympa/sympa.conf
+    echo "sendmail        /usr/sbin/sendmail
+sendmail_aliases /etc/mail/sympa/virtual_aliases
+aliases_program postmap
+aliases_db_type hash
+dmarc_protection_mode dmarc_reject
+" >> /etc/sympa/sympa/sympa.conf
+
+    # we configure postfix :
+    if grep -q "^transport_maps.*hash:/etc/mail/sympa/virtual_aliases.*hash:/etc/sympa/robots.aliases" /etc/postfix/main.cf
+    then
+        echo "main.cf transport_maps OK"
+    else
+        echo "Configuring transport_maps in main.cf"
+        sed -i -e 's#transport_maps((\s|=).*)#transport_maps\1 hash:/etc/mail/sympa/virtual_aliases hash:/etc/sympa/robots.aliases#' /etc/postfix/main.cf
+    fi
+
+    if grep -q "^virtual_mailbox_maps.*hash:/etc/mail/sympa/virtual_aliases.*hash:/etc/sympa/robots.aliases" /etc/postfix/main.cf
+    then
+        echo "main.cf virtual_mailbox_maps OK"
+    else
+        echo "Configuring virtual_mailbox_maps in main.cf"
+        sed -i -e 's#virtual_mailbox_maps((\s|=).*)#virtual_mailbox_maps\1 hash:/etc/mail/sympa/virtual_aliases hash:/etc/sympa/robots.aliases#' /etc/postfix/main.cf
+    fi
+    
+    if grep -q "^sympa_destination_recipient_limit" /etc/postfix/main.cf
+    then
+        echo "main.cf sympa_destination_recipient_limit OK"
+    else
+        echo "Configuring sympa_destination_recipient_limit in main.cf"
+        echo "sympa_destination_recipient_limit = 1" >> /etc/postfix/main.cf
+    fi
+
+    if grep -q "^sympabounce_destination_recipient_limit" /etc/postfix/main.cf
+    then
+        echo "main.cf sympabounce_destination_recipient_limit OK"
+    else
+        echo "Configuring sympabounce_destination_recipient_limit in main.cf"
+        echo "sympabounce_destination_recipient_limit = 1" >> /etc/postfix/main.cf
+    fi
+
+    # now postfix master.cf:
+    if grep -q "^sympa\s" /etc/postfix/master.cf
+    then
+        echo "master.cf sympa transport OK"
+    else
+        echo "adding sympa transport to master.cf"
+        echo 'sympa     unix  -       n       n       -       -       pipe flags=R user=sympa argv=/usr/lib/sympa/bin/queue ${recipient}' >>/etc/postfix/master.cf
+    fi
+    if grep -q "^sympabounce\s" /etc/postfix/master.cf
+    then
+        echo "master.cf sympaboune transport OK"
+    else
+        echo "adding sympabounce transport to master.cf"
+        echo 'sympabounce unix -      n       n       -       -       pipe flags=R user=sympa argv=/usr/lib/sympa/bin/bouncequeue ${recipient}' >>/etc/postfix/master.cf
+    fi
+
+    touch /etc/mail/sympa/virtual_aliases
+    postmap /etc/mail/sympa/virtual_aliases 
+    chown sympa:sympa /etc/mail/sympa/virtual_aliases*
+    touch /etc/sympa/robots.aliases
+    postmap /etc/sympa/robots.aliases
+    
+fi # $1=upgrdae
+
+
+if [ "$1" = "before-reload" ]
+then
+
+    # we restart all services
+    service sympa stop
+    service wwsympa stop
+    service sympasoap stop
+    
+    service sympa start
+    service wwsympa start
+    service sympasoap start 
+
+fi # $1=before-reload

@@ -39,6 +39,7 @@ install:
 	install -m 0755 init/wwsympa init/sympasoap $(DESTDIR)/etc/init.d/
 	install -m 0644 sympa-robot.conf $(DESTDIR)/etc/alternc/templates/apache2/
 	install -m 0644 list_aliases.tt2 $(DESTDIR)/etc/sympa/
+	install -m 750 alternc-sympa-install $(DESTDIR)/usr/lib/alternc/install.d/
 
 	rm -f $(DESTDIR)/usr/share/alternc/panel/locales/Makefile
 

@@ -252,6 +252,10 @@ title   Sympa Mailing List Service
 default_home  home
 create_list listmaster
 ");
+            $f=fopen("/etc/sympa/robots.aliases","ab");
+            fputs($f,"sympa@".$create["mail"]." sympa:\n");
+            fclose($f);
+            
             $somethingchanged=true;
             $code="OK";
             $result="";
@@ -276,6 +280,7 @@ create_list listmaster
         
         
         if ($somethingchanged) {
+            exec("postmap /etc/sympa/robots.aliases");
             $this->restart_sympa();
         }
         
