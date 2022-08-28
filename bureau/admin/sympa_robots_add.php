@@ -57,7 +57,7 @@ echo "<p>"._("If you want to use a domain name to host Sympa mailing-lists, you 
 <tr><td><select class="inl" name="mail"><?php $sympa->select_prefix_list($mail,$sympa::SELECT_MX_UNUSED); ?></select></td></tr>
 
 <tr><th><label for="web"><?php __("Which subdomain will be used for web access to the Mailing-lists management interface?"); ?></label></th></tr>
-<tr><td>	<input type="text" class="int" id="websub" name="websub" value="<?php if (isset($websub)) ehe($websub); else __('lists'); ?>" size="20" maxlength="64" /><b>&nbsp;.&nbsp;</b><select class="inl" name="web"><?php $sympa->select_prefix_list($domain,$sympa::SELECT_WEB); ?></select></td></tr>
+<tr><td>	<input type="text" class="int" id="websub" name="websub" value="<?php if (isset($websub)) ehe($websub); else __('lists'); ?>" size="20" maxlength="64" /><b>&nbsp;.&nbsp;</b><select class="inl" name="web"><?php $sympa->select_prefix_list($web,$sympa::SELECT_WEB); ?></select></td></tr>
 
 <tr><th><label for="listmasters"><?php __("Email of the domain lists super-administrators (1 per line)"); ?> </label></th></tr>
 <tr><td><textarea cols="40" rows="6" class="int" id="listmasters" name="listmasters"><?php  if (isset($listmasters)) ehe($listmasters); ?></textarea></td></tr>

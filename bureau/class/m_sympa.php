@@ -56,19 +56,21 @@ class m_sympa {
      * @param $unused_only boolean if true, only return the domain names that are currently not setup as sympa virtual robots
      * @return array an array of domain names 
      */
-    function prefix_list($which=SELECT_MX) {
+    function prefix_list($which=self::SELECT_MX) {
         global $db,$msg,$cuid;
         $r=array();
         switch ($which) {
-        case SELECT_MX:
+        case self::SELECT_MX:
             $q="SELECT domaine FROM domaines WHERE compte='$cuid' AND gesmx = 1 ORDER BY domaine;";
             break;
-        case SELECT_MX_UNUSED:
+        case self::SELECT_MX_UNUSED:
             $q="SELECT d.domaine FROM domaines d LEFT JOIN sympa s ON s.mail_domain_id=d.id WHERE s.id IS NULL AND d.compte='$cuid' AND d.gesmx = 1 ORDER BY d.domaine;";
             break;
-        case SELECT_WEB:
+        case self::SELECT_WEB:
             $q="SELECT domaine FROM domaines WHERE compte='$cuid' ORDER BY domaine;";
             break;
+        default:
+            return false;
         }            
         $db->query($q);
         while ($db->next_record()) {
@@ -84,7 +86,7 @@ class m_sympa {
      * @param $current string the item that will be selected in the list
      * @return array an array of domain names 
      */
-    function select_prefix_list($current,$which=SELECT_MX) {
+    function select_prefix_list($current,$which=self::SELECT_MX) {
         global $db,$msg;
         $r=$this->prefix_list($which);
         reset($r);
@@ -150,7 +152,7 @@ class m_sympa {
         }
 
         /* check the domains, their owners and their status */
-        $db->query("SELECT * FROM domaines WHERE domaine=".addslashes($domain)." AND compte=$cuid;");
+        $db->query("SELECT * FROM domaines WHERE domaine='".addslashes($domain)."' AND compte=$cuid;");
         if (!$db->next_record()) {
             $msg->raise("ERROR","sympa",_("Domain not found"));
             return false;
@@ -167,13 +169,13 @@ class m_sympa {
         }
         
         /* now the web domain */
-        $db->query("SELECT * FROM domaines WHERE domaine=".addslashes($webdomain)." AND compte=$cuid;");
+        $db->query("SELECT * FROM domaines WHERE domaine='".addslashes($webdomain)."' AND compte=$cuid;");
         if (!$db->next_record()) {
             $msg->raise("ERROR","sympa",_("Web Domain not found"));
             return false;
         }
         $web_domain_id=$db->f('id');
-        if (!checkfqdn($websubdomain)) {
+        if (checkfqdn($websubdomain.".".$webdomain)!=0) {
             $msg->raise("ERROR","sympa",_("The sub-domain name is invalid"));
             return false;
         }
@@ -183,7 +185,7 @@ class m_sympa {
         $lm=explode("\n",$listmasters);
         foreach($lm as $one) {
             $one=trim($one);
-            if (checkmail($one)) $listmaster_checked.=$one."\n";
+            if (checkmail($one)==0) $listmaster_checked.=$one."\n";
         }
         if (!$listmaster_checked) {
             $msg->raise("ERROR","sympa",_("The super-admin list is empty or invalid. Please check"));
@@ -193,7 +195,7 @@ class m_sympa {
         /* all checks done, let's create the robot. */
         // 1. set the web subdomain
         $dom->lock();
-        if (!$dom->set_sub_domain($web, $sub, "sympa-robot", '')) {
+        if (!$dom->set_sub_domain($webdomain, $websubdomain, "sympa-robot", '')) {
             $dom->unlock(); 
             $msg->raise("ERROR","sympa",_("Can't set the web sub-domain, please check this name is not already used."));
             return false;
@@ -201,7 +203,7 @@ class m_sympa {
         $dom->unlock();
 
         // 2. create the robot (will be created by a cron)
-        $db->query("INSERT INTO sympa SET uid=$cuid, mail='".addslashes($domain)."', mail_domain_id=$mail_domain_id, web='".addslashes($web)."', web_domain_id=$web_domain_id, websub='".addslashes($sub)."', listmasters='".addslashes($listmaster_checked)."', sympa_action='CREATE';");
+        $db->query("INSERT INTO sympa SET uid=$cuid, mail='".addslashes($domain)."', mail_domain_id=$mail_domain_id, web='".addslashes($webdomain)."', web_domain_id=$web_domain_id, websub='".addslashes($websubdomain)."', listmasters='".addslashes($listmaster_checked)."', sympa_action='CREATE';");
 
         // 3. add the required wrapper (TODO)
         /*
