@@ -9,7 +9,10 @@ Package: alternc-sympa
 Priority: optional
 Section: admin
 Architecture: all
-Depends: sympa, mysql-client | mariadb-client, debconf, alternc (>> 3.2.10), php5-cli | php-cli | php7.0-cli | php7.1-cli, ${misc:Depends}
+Depends: sympa, spawn-fcgi,
+ mysql-client | mariadb-client, debconf, alternc (>> 3.2.10),
+ php5-cli | php-cli | php7.0-cli | php7.1-cli,
+ ${misc:Depends}
 Description: Sympa module for AlternC
  AlternC is a mutualized hosting software manager for Linux.
  It allows you to manage your websites, domains, ftp, emails, aliases,

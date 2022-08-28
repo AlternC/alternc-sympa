@@ -36,6 +36,9 @@ install:
 		$(DESTDIR)/usr/lib/alternc/
 	install -m 0644 sympa.sql \
 		$(DESTDIR)/usr/share/alternc/install/
+	install -m 0755 init/wwsympa init/sympasoap $(DESTDIR)/etc/init.d/
+	install -m 0644 sympa-robot.conf $(DESTDIR)/etc/alternc/templates/apache2/
+	install -m 0644 list_aliases.tt2 $(DESTDIR)/etc/sympa/
 
 	rm -f $(DESTDIR)/usr/share/alternc/panel/locales/Makefile
 

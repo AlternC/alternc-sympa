@@ -23,4 +23,10 @@ If we can't entirely manage the list of lists in a domain via AlternC
 we will need to check that there are no conflicts with existing mail box/alias for the same domain
 in that case, telling the user seems useful ;) 
 
+Ideally, we'd like to have a script that backups all data of a lists 
+so that we can
+- restore a list easily in case of error (including archives) 
+- restore an entire robot if deleted without knowing the consequences
+the script should be able to backup list information, list archives, or both.
 
+This script could be launched to backup everything every once in a while, or when deleting a virtual robot
