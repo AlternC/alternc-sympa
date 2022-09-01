@@ -43,21 +43,24 @@ dmarc_protection_mode dmarc_reject
 " >> /etc/sympa/sympa/sympa.conf
 
     # we configure postfix :
-    if grep -q "^transport_maps.*hash:/etc/mail/sympa/virtual_aliases.*hash:/etc/sympa/robots.aliases" /etc/postfix/main.cf
-    then
-        echo "main.cf transport_maps OK"
-    else
-        echo "Configuring transport_maps in main.cf"
-        sed -i -e 's#transport_maps\(.*\)#transport_maps\1 hash:/etc/mail/sympa/virtual_aliases hash:/etc/sympa/robots.aliases#' /etc/postfix/main.cf
-    fi
+    for file in /etc/postfix/main.cf /etc/alternc/postfix/postfix.cf 
+    do
+        if grep -q "^transport_maps.*hash:/etc/mail/sympa/virtual_aliases.*hash:/etc/sympa/robots.aliases" "$file"
+        then
+            echo "$file transport_maps OK"
+        else
+            echo "Configuring transport_maps in $file"
+            sed -i -e 's#transport_maps\(.*\)#transport_maps\1 hash:/etc/mail/sympa/virtual_aliases hash:/etc/sympa/robots.aliases#' "$file"
+        fi
 
-    if grep -q "^virtual_mailbox_maps.*hash:/etc/mail/sympa/virtual_aliases.*hash:/etc/sympa/robots.aliases" /etc/postfix/main.cf
-    then
-        echo "main.cf virtual_mailbox_maps OK"
-    else
-        echo "Configuring virtual_mailbox_maps in main.cf"
-        sed -i -e 's#virtual_mailbox_maps\(.*\)#virtual_mailbox_maps\1 hash:/etc/mail/sympa/virtual_aliases hash:/etc/sympa/robots.aliases#' /etc/postfix/main.cf
-    fi
+        if grep -q "^virtual_mailbox_maps.*hash:/etc/mail/sympa/virtual_aliases.*hash:/etc/sympa/robots.aliases" "$file"
+        then
+            echo "$file virtual_mailbox_maps OK"
+        else
+            echo "Configuring virtual_mailbox_maps in $file"
+            sed -i -e 's#virtual_mailbox_maps\(.*\)#virtual_mailbox_maps\1 hash:/etc/mail/sympa/virtual_aliases hash:/etc/sympa/robots.aliases#' "$file"
+        fi
+    done
     
     if grep -q "^sympa_destination_recipient_limit" /etc/postfix/main.cf
     then
