@@ -26,12 +26,6 @@
 require_once("../class/config.php");
 include_once("head.php");
 
-$sympa_status=array(
-		   "CREATE" => _("Pending creation"),
-		   "DELETE" => _("Pending destruction"),
-		   );
-
-
 // If there is no installed domain, let's failed definitely !
 if (count($sympa->prefix_list())==0) {
     $msg->raise("ALERT","sympa",_("No domain is installed on your account, you cannot create any mailing list!"));
