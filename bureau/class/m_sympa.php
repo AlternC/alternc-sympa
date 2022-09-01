@@ -229,6 +229,7 @@ class m_sympa {
         
         // Robots creation
         $db->query("SELECT * FROM sympa WHERE sympa_action='CREATE';");
+        $creates=[];
         while ($db->next_record()) {
             $creates[]=$db->Record;
         }
@@ -266,6 +267,7 @@ create_list listmaster
 
         // Robots destruction
         $db->query("SELECT * FROM sympa WHERE sympa_action='DELETE';");
+        $deletes=[];
         while ($db->next_record()) {
             $deletes[]=$db->Record;
         }
