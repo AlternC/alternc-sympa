@@ -43,7 +43,7 @@ dmarc_protection_mode dmarc_reject
 " >> /etc/sympa/sympa/sympa.conf
 
     # we configure postfix :
-    for file in /etc/postfix/main.cf /etc/alternc/postfix/postfix.cf 
+    for file in /etc/postfix/main.cf /etc/alternc/templates/alternc/postfix/postfix.cf
     do
         if grep -q "^transport_maps.*hash:/etc/mail/sympa/virtual_aliases.*hash:/etc/sympa/robots.aliases" "$file"
         then
