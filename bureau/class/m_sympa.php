@@ -234,31 +234,7 @@ class m_sympa {
             $creates[]=$db->Record;
         }
         foreach($creates as $create) {
-            $weburl = $create["websub"].(($create["websub"])?".":"").$create["web"];
-            syslog(LOG_INFO,"Creating Sympa virtual robot for host ".$create["mail"]." and web interface https://".$weburl);
-
-            mkdir("/etc/sympa/".$create["mail"],0770);
-            chown("/etc/sympa/".$create["mail"],"sympa");
-            chgrp("/etc/sympa/".$create["mail"],"sympa");
-            mkdir("/var/lib/sympa/list_data/".$create["mail"],0770);
-            chown("/var/lib/sympa/list_data/".$create["mail"],"sympa");
-            chgrp("/var/lib/sympa/list_data/".$create["mail"],"sympa");
-            
-            $listmasters = implode(",",explode("\n",$create["listmasters"]));
-            file_put_contents("/etc/sympa/".$create["mail"]."/robot.conf","#
-# Sympa robot configuration for ".$create["mail"]."
-#
-domain ".$create["mail"]."
-listmaster ".$listmasters."
-wwsympa_url https://".$weburl."/wws
-title   Sympa Mailing List Service
-default_home  home
-create_list listmaster
-");
-            $f=fopen("/etc/sympa/robots.aliases","ab");
-            fputs($f,"sympa@".$create["mail"]." sympa:\n");
-            fclose($f);
-            
+            $this->cron_create_robot($create);
             $somethingchanged=true;
             $code="OK";
             $result="";
@@ -272,11 +248,7 @@ create_list listmaster
             $deletes[]=$db->Record;
         }
         foreach($deletes as $delete) {
-            $weburl = $delete["websub"].(($delete["websub"])?".":"").$delete["web"];
-            syslog(LOG_INFO,"Deleting Sympa virtual robot for host ".$delete["mail"]." and web interface https://".$weburl);
-
-            exec("rm -rf ".escapeshellarg("/etc/sympa/".$delete["mail"]));
-            exec("rm -rf ".escapeshellarg("/var/lib/sympa/list_data/".$delete["mail"]));
+            $this->cron_delete_robot($delete);
             
             $somethingchanged=true;
             $db->query("DELETE FROM sympa WHERE id=".$delete["id"].";"); 
@@ -291,6 +263,63 @@ create_list listmaster
     }
 
 
+    /* ----------------------------------------------------------------- */
+    /** This function is launched by the cron_update function above
+     * and is in charge of effectively create a virtual robot for sympa
+     * @param $create array a hash with all informations from sympa table.  
+     */
+    private function cron_create_robot($create) {
+        $weburl = $create["websub"].(($create["websub"])?".":"").$create["web"];
+        syslog(LOG_INFO,"Creating Sympa virtual robot for host ".$create["mail"]." and web interface https://".$weburl);
+
+        mkdir("/etc/sympa/".$create["mail"],0770);
+        chown("/etc/sympa/".$create["mail"],"sympa");
+        chgrp("/etc/sympa/".$create["mail"],"sympa");
+        mkdir("/var/lib/sympa/list_data/".$create["mail"],0770);
+        chown("/var/lib/sympa/list_data/".$create["mail"],"sympa");
+        chgrp("/var/lib/sympa/list_data/".$create["mail"],"sympa");
+            
+        $listmasters = implode(",",explode("\n",$create["listmasters"]));
+        file_put_contents("/etc/sympa/".$create["mail"]."/robot.conf","#
+# Sympa robot configuration for ".$create["mail"]."
+#
+domain ".$create["mail"]."
+listmaster ".$listmasters."
+wwsympa_url https://".$weburl."/wws
+title   Sympa Mailing List Service
+default_home  home
+create_list listmaster
+");
+        $f=fopen("/etc/sympa/robots.aliases","ab");
+        fputs($f,"sympa@".$create["mail"]." sympa:\n");
+        fclose($f);
+    }
+
+
+    /* ----------------------------------------------------------------- */
+    /** This function is launched by the cron_update function above
+     * and is in charge of effectively destroy a virtual robot for sympa
+     * @param $create array a hash with all informations from sympa table.  
+     */
+    private function cron_delete_robot($delete) {
+        $weburl = $delete["websub"].(($delete["websub"])?".":"").$delete["web"];
+        syslog(LOG_INFO,"Deleting Sympa virtual robot for host ".$delete["mail"]." and web interface https://".$weburl);
+        
+        exec("rm -rf ".escapeshellarg("/etc/sympa/".$delete["mail"]));
+        exec("rm -rf ".escapeshellarg("/var/lib/sympa/list_data/".$delete["mail"]));
+
+        // remove line from robots.aliases for this domain
+        $f=fopen("/etc/sympa/robots.aliases","rb");
+        $g=fopen("/etc/sympa/robots.aliases.new","rb");
+        while ($s=fgets($f,8192)) {
+            if (trim($s)!="sympa@".$delete["mail"]." sympa:") fputs($g,$s);
+        }
+        fclose($f);
+        fclose($g);
+        rename("/etc/sympa/robots.aliases.new","/etc/sympa/robots.aliases");
+    }
+
+    
     /* ----------------------------------------------------------------- */
     /** Restart all sympa services
      * MUST be launched as root of course
