@@ -250,7 +250,7 @@ class m_sympa {
 #
 domain ".$create["mail"]."
 listmaster ".$listmasters."
-wwsympa_url https://".$weburl."/wws/
+wwsympa_url https://".$weburl."/wws
 title   Sympa Mailing List Service
 default_home  home
 create_list listmaster
