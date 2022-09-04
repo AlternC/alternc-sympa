@@ -294,7 +294,7 @@ class m_sympa {
         }
         
         // 2. edit the robot (will be edited by a cron)
-        $db->query("UPDATE sympa SET sympa_action='REGENERATE' WHERE id='".addslashes($id)."';");
+        $db->query("UPDATE sympa SET sympa_action='REGENERATE', web='".addslashes($webdomain)."', web_domain_id=$web_domain_id,websub='".addslashes($websubdomain)."', listmasters='".addslashes($listmaster_checked)."' WHERE id='".addslashes($id)."';");
 
         return true;
     }
