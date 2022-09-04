@@ -34,7 +34,7 @@ getFields($fields);
 
 $domain = $sympa->get_robot($id);
 if (!$domain) {
-    $msg->raise("ALERT","sympa",_("No domain is installed on your account, you cannot create any mailing list!"));
+    $msg->raise("ALERT","sympa",_("Can't find the requested domain on your account!"));
     require_once("sympa_robots.php");
     exit();
 }

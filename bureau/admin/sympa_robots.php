@@ -66,7 +66,7 @@ if ($quota->cancreate("sympa")) {
 ?>
 
 	<table class="tlist">
-<tr><th><?php __("Domain Name"); ?></th><th><?php __("Admin web interface"); ?></th><th><?php __("Domain Status"); ?><th>&nbsp;</th></tr>
+<tr><th><?php __("Domain Name"); ?></th><th><?php __("Admin web interface"); ?></th><th><?php __("Domain Status"); ?><th><?php __("Actions"); ?></th></tr>
 	<?php
 	reset($r);
 	$col=1;
@@ -80,7 +80,7 @@ if ($quota->cancreate("sympa")) {
             <td colspan="2"><?php __("This domain lists management is pending deletion, you can't do anything on it"); ?></td>
 		   <?php } else { ?>
             <td><?php __("sympa_status_".$val["sympa_action"]); ?></td>
-			<td><a class="ina" href="sympa_robots_del.php?id=<?php echo $val["id"] ?>"><?php __("Delete"); ?></a></td>
+			<td><a class="ina" href="sympa_robots_edit.php?id=<?php echo $val["id"] ?>"><?php __("Edit"); ?></a> &nbsp; <a class="ina" href="sympa_robots_del.php?id=<?php echo $val["id"] ?>"><?php __("Delete"); ?></a></td>
 	      <?php } ?>
 		</tr>
 		<?php

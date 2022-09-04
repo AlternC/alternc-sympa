@@ -204,14 +204,98 @@ class m_sympa {
 
         // 2. create the robot (will be created by a cron)
         $db->query("INSERT INTO sympa SET uid=$cuid, mail='".addslashes($domain)."', mail_domain_id=$mail_domain_id, web='".addslashes($webdomain)."', web_domain_id=$web_domain_id, websub='".addslashes($websubdomain)."', listmasters='".addslashes($listmaster_checked)."', sympa_action='CREATE';");
+        
+        return true;
+    }
 
-        // 3. add the required wrapper (TODO)
-        /*
-        if(!$this->add_wrappers($domain)){
+
+
+    /* ----------------------------------------------------------------- */
+    /** Edit an existing robot. 
+     * @param $id integer the entry in the sympa table for this robot
+     * @param $webdomain string the domain name that will host the web interface.
+     * @param $websubdomain string the subdomain part of the domain name that will host the web interface.
+     * @param $listmasters the email addresses of the listmasters of that domain (1 or more required, 1 per line)
+     * @return boolean TRUE if the domain has been edited, or FALSE if an error occured
+     */
+    function edit_robot($id,$webdomain,$websubdomain,$listmasters) {
+        global $db,$msg,$quota,$mail,$cuid,$dom,$L_FQDN;
+        $msg->log("sympa","edit_robot",$id." - " .$websubdomain.".".$webdomain." - ".str_replace("\n",",",$listmasters));
+
+        // Check the quota
+        if (!$quota->cancreate("sympa")) {
+            $msg->raise("ERROR","sympa",_("You are not allowed to use sympa mailing-list. Contact your administrator if needed")); // quota
             return false;
         }
-        */
+
+        /* check that the robot exists and is owned by current user. */
+        $db->query("SELECT * FROM sympa WHERE id='".addslashes($id)."' AND compte=$cuid;");
+        if (!$db->next_record()) {
+            $msg->raise("ERROR","sympa",_("Domain not found"));
+            return false;
+        }
+        $old=$db->Record;
+
+        $somethingchanged=false;
+        // is the web domain url changed?
+        if ($old["web"]!=$webdomain || $old["websub"]!=$websubdomain) {
+            $somethingchanged=true;
+            /* now the web domain */
+            $db->query("SELECT * FROM domaines WHERE domaine='".addslashes($webdomain)."' AND compte=$cuid;");
+            if (!$db->next_record()) {
+                $msg->raise("ERROR","sympa",_("Web Domain not found"));
+                return false;
+            }
+            $web_domain_id=$db->f('id');
+            if (checkfqdn($websubdomain.".".$webdomain)!=0) {
+                $msg->raise("ERROR","sympa",_("The sub-domain name is invalid"));
+                return false;
+            }
+        }
         
+        /* check the listmasters list */
+        $listmaster_checked="";
+        $lm=explode("\n",$listmasters);
+        foreach($lm as $one) {
+            $one=trim($one);
+            if (checkmail($one)==0) $listmaster_checked.=$one."\n";
+        }
+        if (!$listmaster_checked) {
+            $msg->raise("ERROR","sympa",_("The super-admin list is empty or invalid. Please check"));
+            return false;
+        }
+        if (count(array_diff($listmaster_checked,explode("\n",$old["listmasters"])))) {
+            $somethingchanged=true;
+        }
+
+        if (!$somethingchanged) {
+            $msg->raise("ALERT","sympa",_("You didn't change any setting for this domain, if that's what you want, click cancel instead"));
+            return false;
+        }
+        
+        /* all checks done, let's edit the robot. */
+        
+        if ($old["web"]!=$webdomain || $old["websub"]!=$websubdomain) {
+            // 1. set the web subdomain
+            $dom->lock();
+
+            // edit the existing one to be a redirect to the new one: 
+            $db->query("SELECT * FROM sub_domaines WHERE domaine='".addslashes($old["web"])."' AND sub='".addslashes($old["websub"])."' AND type='sympa-robot';");
+            if ($db->next_record()) {
+                $dom->set_sub_domain($old["web"], $old["websub"], "url", "https://".$websubdomain.(($websubdomain)?".":"").$webdomain, $db->Record["id"]);
+            }
+            
+            if (!$dom->set_sub_domain($webdomain, $websubdomain, "sympa-robot", '')) {
+                $dom->unlock(); 
+                $msg->raise("ERROR","sympa",_("Can't set the web sub-domain, please check this name is not already used."));
+                return false;
+            }
+            $dom->unlock();
+        }
+        
+        // 2. edit the robot (will be edited by a cron)
+        $db->query("UPDATE sympa SET sympa_action='REGENERATE' WHERE id='".addslashes($id)."';");
+
         return true;
     }
 
@@ -253,7 +337,21 @@ class m_sympa {
             $somethingchanged=true;
             $db->query("DELETE FROM sympa WHERE id=".$delete["id"].";"); 
         }
-        
+
+        // Robots edit
+        $db->query("SELECT * FROM sympa WHERE sympa_action='REGENERATE';");
+        $edits=[];
+        while ($db->next_record()) {
+            $edits[]=$db->Record;
+        }
+        foreach($edits as $edit) {
+            $this->cron_create_robot($edit,true /* this is an edit */ );
+            $somethingchanged=true;
+            $code="OK";
+            $result="";
+            $db->query("UPDATE sympa SET sympa_action='$code', sympa_result='$result' WHERE id=".$edit["id"].";"); 
+        }
+
         
         if ($somethingchanged) {
             exec("postmap /etc/sympa/robots.aliases");
@@ -268,7 +366,7 @@ class m_sympa {
      * and is in charge of effectively create a virtual robot for sympa
      * @param $create array a hash with all informations from sympa table.  
      */
-    private function cron_create_robot($create) {
+    private function cron_create_robot($create,$isanedit=false) {
         $weburl = $create["websub"].(($create["websub"])?".":"").$create["web"];
         syslog(LOG_INFO,"Creating Sympa virtual robot for host ".$create["mail"]." and web interface https://".$weburl);
 
@@ -290,16 +388,21 @@ title   Sympa Mailing List Service
 default_home  home
 create_list listmaster
 ");
-        $f=fopen("/etc/sympa/robots.aliases","ab");
-        fputs($f,"sympa@".$create["mail"]." sympa:\n");
-        fclose($f);
+        
+        // we only add the robots.aliases on robot creation, not on robot edit.
+        if (!$isanedit) {
+            $f=fopen("/etc/sympa/robots.aliases","ab");
+            fputs($f,"sympa@".$create["mail"]." sympa:\n");
+            fclose($f);
+        }
     }
+
 
 
     /* ----------------------------------------------------------------- */
     /** This function is launched by the cron_update function above
      * and is in charge of effectively destroy a virtual robot for sympa
-     * @param $create array a hash with all informations from sympa table.  
+     * @param $delete array a hash with all informations from sympa table.  
      */
     private function cron_delete_robot($delete) {
         $weburl = $delete["websub"].(($delete["websub"])?".":"").$delete["web"];
@@ -422,13 +525,15 @@ create_list listmaster
      * @access private
      */ 
     function hook_quota_get() {
-        global $msg,$cuid,$db;
+        global $msg,$cuid,$db;        
         $msg->log("sympa","getquota");
         $q=Array("name"=>"sympa", "description"=>_("Sympa Mailing lists"), "used"=>0);
+        /* // as of now we don't manage the number of lists via alternc, so the "used" quota should always be 0
         $db->query("SELECT COUNT(*) AS cnt FROM sympa WHERE uid='$cuid'");
         if ($db->next_record()) {
             $q['used']=($db->f("cnt")!=0);
         }
+        */
         return $q;
     }
 
