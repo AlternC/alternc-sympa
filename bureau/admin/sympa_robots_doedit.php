@@ -46,7 +46,7 @@ if (!$r) {
 	include("sympa_robots_edit.php");
 	exit();
 } else {
-	$msg->raise("INFO","sympa",_("The Sympa domain has been changed. Please wait a few minutes for the changes to be paplied."));
+	$msg->raise("INFO","sympa",_("The Sympa domain has been changed. Please wait a few minutes for the changes to be applied."));
 	include("sympa_robots.php");
 	exit();
 }
