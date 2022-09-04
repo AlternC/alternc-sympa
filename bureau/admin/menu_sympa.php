@@ -30,7 +30,7 @@ if (isset($q["t"]) && $q["t"] > 0) {  ?>
 <div class="menu-box">
   <a href="sympa_robots.php">
     <div class="menu-title">
-      <img src="images/sympa.png" alt="<?php __("Mailing Lists"); ?>" />&nbsp;<?php __("Mailing Lists"); ?> (<?= $q["u"]; ?>/<?= $q["t"]; ?>)
+      <img src="images/sympa.png" alt="<?php __("Mailing Lists"); ?>" />&nbsp;<?php __("Mailing Lists"); ?>
 			<img src="images/menu_right.png" alt="" style="float:right;" class="menu-right"/>
       <br /><small><?php __("(with Sympa)"); ?></small>
     </div>
