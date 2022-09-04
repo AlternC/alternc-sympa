@@ -229,7 +229,7 @@ class m_sympa {
         }
 
         /* check that the robot exists and is owned by current user. */
-        $db->query("SELECT * FROM sympa WHERE id='".addslashes($id)."' AND compte=$cuid;");
+        $db->query("SELECT * FROM sympa WHERE id='".addslashes($id)."' AND uid=$cuid;");
         if (!$db->next_record()) {
             $msg->raise("ERROR","sympa",_("Domain not found"));
             return false;
@@ -264,7 +264,7 @@ class m_sympa {
             $msg->raise("ERROR","sympa",_("The super-admin list is empty or invalid. Please check"));
             return false;
         }
-        if (count(array_diff($listmaster_checked,explode("\n",$old["listmasters"])))) {
+        if (count(array_diff(explode("\n",$listmaster_checked),explode("\n",$old["listmasters"])))) {
             $somethingchanged=true;
         }
 
