@@ -498,7 +498,7 @@ create_list listmaster
      * @access private
      */
     function hook_dom_del_mx_domain($dom_id) {
-        global $msg,$dom;
+        global $msg,$dom,$db;
         // if there is a robot, delete it
         $db->query("SELECT * FROM sympa WHERE mail_domain_id=".$dom_id.";");
         if ($db->next_record()) {
