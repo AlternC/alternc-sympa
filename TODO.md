@@ -4,9 +4,9 @@ AlternC Sympa module development
 
 This module is currently under active development, and all wanted features are not implemented.
 
-* [ ] Basic creation and destruction of sympa virtual robots  (in progress)
+* [x] Basic creation and destruction of sympa virtual robots  
 * [ ] proper destruction of virtual robots (do we need to destroy properly all the lists?)
-* [ ] management of mailing lists itself via AlternC? (creation / destruction) (it's not really needed, but allow us to manage quotas)
+* [ ] management of mailing lists itself via AlternC? (creation / destruction) (it's not really needed, but allow us to manage quotas, I don't think that's a good idea since sympa interface to create/destroy lists is good.)
 
 
 Known Bugs: 
