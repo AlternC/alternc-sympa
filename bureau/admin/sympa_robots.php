@@ -75,7 +75,7 @@ if ($quota->cancreate("sympa")) {
 		?>
 		<tr class="lst<?php echo $col; ?>">
            <td>@<?php echo $val["mail"]; ?></td>
-           <td><a class="ina" target="_blank" href="https://<?php echo $val["websub"].".".$val["web"]; ?>"><?php echo $val["websub"].".".$val["web"]; ?></a></td>        
+           <td><a class="ina" target="_blank" href="https://<?php echo $val["websub"].(($val["websub"])?".":"").$val["web"]; ?>"><?php echo $val["websub"].(($val["websub"])?".":"").$val["web"]; ?></a></td>        
 		   <?php if ($val["sympa_action"]=="DELETE" || $val["sympa_action"]=="DELETING")  { ?>
             <td colspan="2"><?php __("This domain lists management is pending deletion, you can't do anything on it"); ?></td>
 		   <?php } else { ?>
