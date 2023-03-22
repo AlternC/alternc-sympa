@@ -394,6 +394,8 @@ create_list listmaster
             $f=fopen("/etc/sympa/robots.aliases","ab");
             fputs($f,"sympa@".$create["mail"]." sympa:\n");
             fclose($f);
+            // and update the postfix map : IMPORTANT
+            exec("/usr/sbin/postmap /etc/sympa/robots.aliases");
         }
     }
 
@@ -420,6 +422,8 @@ create_list listmaster
         fclose($f);
         fclose($g);
         rename("/etc/sympa/robots.aliases.new","/etc/sympa/robots.aliases");
+        // and update the postfix map : IMPORTANT
+        exec("/usr/sbin/postmap /etc/sympa/robots.aliases");
     }
 
     
