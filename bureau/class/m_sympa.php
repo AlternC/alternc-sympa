@@ -252,6 +252,7 @@ class m_sympa {
                 return false;
             }
         }
+
         
         /* check the listmasters list */
         $listmaster_checked="";
@@ -294,7 +295,11 @@ class m_sympa {
         }
         
         // 2. edit the robot (will be edited by a cron)
-        $db->query("UPDATE sympa SET sympa_action='REGENERATE', web='".addslashes($webdomain)."', web_domain_id=$web_domain_id,websub='".addslashes($websubdomain)."', listmasters='".addslashes($listmaster_checked)."' WHERE id='".addslashes($id)."';");
+        $sql="UPDATE sympa SET sympa_action='REGENERATE' ";
+        if ($web_domain_id)  $sql.=", web='".addslashes($webdomain)."', web_domain_id=$web_domain_id";
+        if ($websubdomain) $sql.=",websub='".addslashes($websubdomain)."'";
+        $sql.=", listmasters='".addslashes($listmaster_checked)."' WHERE id='".addslashes($id)."';";
+        $db->query($sql);
 
         return true;
     }
@@ -370,13 +375,14 @@ class m_sympa {
         $weburl = $create["websub"].(($create["websub"])?".":"").$create["web"];
         syslog(LOG_INFO,"Creating Sympa virtual robot for host ".$create["mail"]." and web interface https://".$weburl);
 
-        mkdir("/etc/sympa/".$create["mail"],0770);
+        if (!is_dir("/etc/sympa/".$create["mail"])) mkdir("/etc/sympa/".$create["mail"],0770);
         chown("/etc/sympa/".$create["mail"],"sympa");
         chgrp("/etc/sympa/".$create["mail"],"sympa");
-        mkdir("/var/lib/sympa/list_data/".$create["mail"],0770);
+        chmod("/etc/sympa/".$create["mail"],0770);
+        if (!is_dir("/var/lib/sympa/list_data/".$create["mail"])) mkdir("/var/lib/sympa/list_data/".$create["mail"],0770);
         chown("/var/lib/sympa/list_data/".$create["mail"],"sympa");
         chgrp("/var/lib/sympa/list_data/".$create["mail"],"sympa");
-            
+        chmod("/var/lib/sympa/list_data/".$create["mail"],0770);
         $listmasters = implode(",",explode("\n",$create["listmasters"]));
         file_put_contents("/etc/sympa/".$create["mail"]."/robot.conf","#
 # Sympa robot configuration for ".$create["mail"]."
