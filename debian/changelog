@@ -1,3 +1,9 @@
+alternc-sympa (0.1.2) buster; urgency=low
+
+  * Fix #2 : Provide a complete PATH
+
+ -- Camille Lafitte <alternc@webelys.com>  Tue, 21 Dec 2023 15:14:22 +0100
+
 alternc-sympa (0.1.1) stable; urgency=low
 
   * Initial release
