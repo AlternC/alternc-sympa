@@ -10,3 +10,4 @@ usr/share/alternc/panel/locales/fr_FR/LC_MESSAGES
 usr/share/doc/alternc-sympa
 etc/apache2/conf.d
 var/lib/alternc/backups
+var/www/sympa
