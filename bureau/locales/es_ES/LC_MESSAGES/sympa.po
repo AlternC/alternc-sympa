@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: AlternC 3.0\n"
 "Report-Msgid-Bugs-To: i18n@alternc.org\n"
 "POT-Creation-Date: 2022-09-04 19:57+0200\n"
-"PO-Revision-Date: 2024-04-25 18:07+0000\n"
+"PO-Revision-Date: 2024-04-26 19:07+0000\n"
 "Last-Translator: gallegonovato <fran-carro@hotmail.es>\n"
 "Language-Team: Spanish <https://hosted.weblate.org/projects/alternc/sympa/es/"
 ">\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.5.1-dev\n"
+"X-Generator: Weblate 5.5.1\n"
 
 #: ../admin/menu_sympa.php:33
 msgid "Mailing Lists"
@@ -303,8 +303,8 @@ msgstr "Este robot no existe"
 
 #: ../class/m_sympa.php:475
 msgid "This domain has pending action, you cannot delete it"
-msgstr ""
+msgstr "Este dominio ya tiene una acción en curso, no puedes eliminarlo"
 
 #: ../class/m_sympa.php:489
 msgid "Mailing lists (Sympa)"
-msgstr ""
+msgstr "Listas de correo (Sympa)"
