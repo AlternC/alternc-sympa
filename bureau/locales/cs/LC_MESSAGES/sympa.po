@@ -1,70 +1,63 @@
-# Alternc-sympa translation file
-# Copyright (C) 2022 AlternC Team
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR AlternC Team
 # This file is distributed under the same license as the AlternC package.
-# Benjamin Sonntag <benjamin@octopuce.fr>, 2022
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: AlternC 3.0\n"
+"Project-Id-Version: AlternC 2.0\n"
 "Report-Msgid-Bugs-To: i18n@alternc.org\n"
 "POT-Creation-Date: 2022-09-04 19:57+0200\n"
-"PO-Revision-Date: 2024-04-24 17:20+0000\n"
-"Last-Translator: Km <cam.lafit@azerttyu.net>\n"
-"Language-Team: French <https://hosted.weblate.org/projects/alternc/sympa/fr/>"
-"\n"
-"Language: fr_FR\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: Automatically generated\n"
+"Language-Team: none\n"
+"Language: cs\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 5.5.1-dev\n"
 
 #: ../admin/menu_sympa.php:33
 msgid "Mailing Lists"
-msgstr "Listes de discussion"
+msgstr ""
 
 #: ../admin/menu_sympa.php:35
 msgid "(with Sympa)"
-msgstr "(avec Sympa)"
+msgstr ""
 
 #: ../admin/sympa_robots.php:31
 msgid ""
 "No domain is installed on your account, you cannot create any mailing list!"
 msgstr ""
-"Aucun domaine n'est installé sur votre compte, vous ne pouvez donc pas créer "
-"de listes de discussion !"
 
 #: ../admin/sympa_robots.php:33 ../admin/sympa_robots.php:52
 #: ../class/m_sympa.php:35 ../class/m_sympa.php:530
 msgid "Sympa Mailing lists"
-msgstr "Listes de discussion avec Sympa"
+msgstr ""
 
 #: ../admin/sympa_robots.php:61
 msgid "Setup a domain for Sympa mailing-lists"
-msgstr "Configurer un nom de domaine pour Sympa"
+msgstr ""
 
 #: ../admin/sympa_robots.php:69
 msgid "Actions"
-msgstr "Actions"
+msgstr ""
 
 #: ../admin/sympa_robots.php:69
 msgid "Admin web interface"
-msgstr "Interface web de gestion"
+msgstr ""
 
 #: ../admin/sympa_robots.php:69 ../admin/sympa_robots_del.php:53
 msgid "Domain Name"
-msgstr "Nom de domaine"
+msgstr ""
 
 #: ../admin/sympa_robots.php:69
 msgid "Domain Status"
-msgstr "État du domaine"
+msgstr ""
 
 #: ../admin/sympa_robots.php:80
 msgid ""
 "This domain lists management is pending deletion, you can't do anything on it"
 msgstr ""
-"Ce nom de domaine pour sympa est en cours de suppression, vous ne pouvez "
-"rien faire avec"
 
 #: ../admin/sympa_robots.php:82
 msgid "sympa_status_"
@@ -72,22 +65,20 @@ msgstr ""
 
 #: ../admin/sympa_robots.php:83
 msgid "Delete"
-msgstr "Effacer"
+msgstr ""
 
 #: ../admin/sympa_robots.php:83
 msgid "Edit"
-msgstr "Modifier"
+msgstr ""
 
 #: ../admin/sympa_robots_add.php:37
 msgid ""
 "You currently have no unused domain for which you can host sympa robots."
 msgstr ""
-"Vous n'avez actuellement aucun domaine pour lequel vous pouvez utiliser "
-"sympa."
 
 #: ../admin/sympa_robots_add.php:43
 msgid "Sympa Mailing-lists, setup of a domain name"
-msgstr "Configuration d'un domaine pour les listes de discussion Sympa"
+msgstr ""
 
 #: ../admin/sympa_robots_add.php:49
 msgid ""
@@ -96,208 +87,180 @@ msgid ""
 "on your account to host mailing lists. You will also need a subdomain to "
 "host your web interface for those lists (eg: lists.example.com)."
 msgstr ""
-"Si vous souhaitez utiliser un nom de domaine pour y héberger des listes de "
-"discussion sous Sympa, vous devez le configurer. Vous pouvez utiliser tout "
-"domaine dont les mails sont hébergés sur votre compte pour y mettre des "
-"listes de discussion. Vous aurez aussi besoin d'un sous-domaine pour y "
-"mettre l'interface web d'administration de vos listes (par exemple : listes."
-"example.com)."
 
 #: ../admin/sympa_robots_add.php:56
 msgid "Which domain name will host the lists?"
-msgstr "Quel domaine va héberger les listes ?"
+msgstr ""
 
 #: ../admin/sympa_robots_add.php:59
 msgid ""
 "Which subdomain will be used for web access to the Mailing-lists management "
 "interface?"
 msgstr ""
-"Quel sous-domaine permettra d'accéder à l'interface web de gestion des "
-"listes ?"
 
 #: ../admin/sympa_robots_add.php:60 ../admin/sympa_robots_edit.php:69
 msgid "lists"
-msgstr "listes"
+msgstr ""
 
 #: ../admin/sympa_robots_add.php:62 ../admin/sympa_robots_edit.php:71
 msgid "Email of the domain lists super-administrators (1 per line, 1 minimum)"
 msgstr ""
-"Emails des super-administrateurs de ce domaine (1 par ligne, 1 minimum)"
 
 #: ../admin/sympa_robots_add.php:66
 msgid "Setup that domain to host Sympa Mailing-lists."
-msgstr "Configurer ce domaine pour les listes de discussions Sympa."
+msgstr ""
 
 #: ../admin/sympa_robots_add.php:67 ../admin/sympa_robots_edit.php:76
 msgid "Cancel"
-msgstr "Annuler"
+msgstr ""
 
 #: ../admin/sympa_robots_del.php:37 ../admin/sympa_robots_edit.php:42
 msgid "Can't find the requested domain on your account!"
-msgstr "Impossible de trouver ce domaine sur votre compte !"
+msgstr ""
 
 #: ../admin/sympa_robots_del.php:43
 msgid "Deleting a Sympa Domain name"
-msgstr "Effacement d'un nom de domaine pour Sympa"
+msgstr ""
 
 #: ../admin/sympa_robots_del.php:50
 msgid ""
 "Please confirm that you want to delete the following domain name for Sympa "
 "Mailing Lists."
 msgstr ""
-"Merci de confirmer que vous souhaitez supprimer ce nom de domaine pour les "
-"listes de discussion avec Sympa."
 
 #: ../admin/sympa_robots_del.php:54
 msgid "Web Interface URL"
-msgstr "Adresse de l'interface web"
+msgstr ""
 
 #: ../admin/sympa_robots_del.php:60
 msgid "Yes, delete this domain mailing-lists from Sympa."
-msgstr "Oui, supprimer ce domaine pour les listes de discussion avec Sympa."
+msgstr ""
 
 #: ../admin/sympa_robots_del.php:61
 msgid "No, don't delete this domain's mailing-lists on Sympa."
 msgstr ""
-"Non, ne pas supprimer ce domaine pour les listes de discussion avec Sympa."
 
 #: ../admin/sympa_robots_doadd.php:41
 msgid ""
 "The Sympa domain has been setup. Please wait a few minutes before accessing "
 "its web interface."
 msgstr ""
-"Le nom de domaine a été configuré pour utiliser Sympa. Merci de patienter "
-"quelques minutes avant d'accéder à l'interface web de gestion."
 
 #: ../admin/sympa_robots_doedit.php:49
 msgid ""
 "The Sympa domain has been changed. Please wait a few minutes for the changes "
-"to be applied."
+"to be paplied."
 msgstr ""
-"La configuration Sympa de ce nom de domaine a été modifiée. Merci de patienter "
-"quelques minutes pour voir les modifications."
 
 #: ../admin/sympa_robots_edit.php:51
 msgid "Sympa Mailing-lists, change the setup of a domain name"
-msgstr "Modification de la configuration d'un domaine pour les listes de discussion Sympa"
+msgstr ""
 
 #: ../admin/sympa_robots_edit.php:57
 msgid ""
 "This form allows you to change the settings of a domain name for which you "
 "have Sympa mailing-list already setup."
-msgstr "Ce formulaire vous permet de modifier les paramètres d'un nom de domaine pour lequel vous avez des lites de discussion Sympa déjà configurées."
+msgstr ""
 
 #: ../admin/sympa_robots_edit.php:65
 msgid "Domain name of the lists"
-msgstr "Domaine qui héberge vos listes ?"
+msgstr ""
 
 #: ../admin/sympa_robots_edit.php:68
 msgid ""
 "If you change it, the old one will be set as a redirect to the new one."
 "<br>Changing it is not recommended though, once you published it for list "
 "owners or subscribers."
-msgstr "Si vous changez cette adresse, l'ancienne sera transformée en redirection vers la nouvelle.<br>Nous recommandons de ne pas changer l'adresse si vous l'avez déjà publiée à des administrateurs ou abonnés."
+msgstr ""
 
 #: ../admin/sympa_robots_edit.php:68
 msgid "Subdomain used for web access to the Mailing-lists management interface"
 msgstr ""
-"Sous-domaine d'accès à l'interface web de gestion des listes"
 
 #: ../admin/sympa_robots_edit.php:71
 msgid ""
 "You can change this list as you like. If you add someone whose email is not "
 "yet enrolled in the server, <br>this person can create an account via the "
 "web interface to access its listmasters privileges"
-msgstr "Vous pouvez changer la liste des administrateurs. Si vous ajoutez quelqu'un qui n'est pas inscrit dans Sympa<br>il pourra s'inscrire avec son mail via l'interface web et bénéficier de ses droits d'administrateur."
+msgstr ""
 
 #: ../admin/sympa_robots_edit.php:75
 msgid "Edit this domain's Sympa settings."
-msgstr "Changer la configuration de ce domaine pour Sympa."
+msgstr ""
 
 #: ../class/m_sympa.php:46
 msgid "sympa_status_CREATE"
-msgstr "Création en cours"
+msgstr ""
 
 #: ../class/m_sympa.php:46
 msgid "sympa_status_DELETE"
-msgstr "Suppression demandée"
+msgstr ""
 
 #: ../class/m_sympa.php:46
 msgid "sympa_status_DELETING"
-msgstr "Suppression en cours"
+msgstr ""
 
 #: ../class/m_sympa.php:46
 msgid "sympa_status_OK"
-msgstr "OK"
+msgstr ""
 
 #: ../class/m_sympa.php:46
 msgid "sympa_status_REGENERATE"
-msgstr "Réinstallation demandée"
+msgstr ""
 
 #: ../class/m_sympa.php:129
 msgid "This list robot does not exist"
-msgstr "Ce robot de listes n'existe pas"
+msgstr ""
 
 #: ../class/m_sympa.php:150 ../class/m_sympa.php:227
 msgid ""
 "You are not allowed to use sympa mailing-list. Contact your administrator if "
 "needed"
 msgstr ""
-"Vous n'êtes pas autorisé à utiliser la gestion des listes par Sympa. "
-"Contactez votre administrateur si besoin"
 
 #: ../class/m_sympa.php:157 ../class/m_sympa.php:234
 msgid "Domain not found"
-msgstr "Domaine non trouvé"
+msgstr ""
 
 #: ../class/m_sympa.php:161
 msgid "The domain's email is not hosted here"
-msgstr "Les mails de ce domaine ne sont pas hébergés ici"
+msgstr ""
 
 #: ../class/m_sympa.php:167
 msgid "This domain is already setup for Sympa"
-msgstr "Ce domaine est déjà configuré pour utiliser Sympa"
+msgstr ""
 
 #: ../class/m_sympa.php:174 ../class/m_sympa.php:246
 msgid "Web Domain not found"
-msgstr "Domain d'interface web non trouvé"
+msgstr ""
 
 #: ../class/m_sympa.php:179 ../class/m_sympa.php:251
 msgid "The sub-domain name is invalid"
-msgstr "Le sous-domaine demandé n'est pas valide"
+msgstr ""
 
 #: ../class/m_sympa.php:191 ../class/m_sympa.php:264
 msgid "The super-admin list is empty or invalid. Please check"
 msgstr ""
-"La liste des emails des super-admin est vide ou invalide. Merci de vérifier"
 
 #: ../class/m_sympa.php:200 ../class/m_sympa.php:290
 msgid ""
 "Can't set the web sub-domain, please check this name is not already used."
 msgstr ""
-"Impossible de configurer le sous-domaine, merci de vérifier qu'il n'est pas "
-"déjà utilisé."
 
 #: ../class/m_sympa.php:272
 msgid ""
 "You didn't change any setting for this domain, if that's what you want, "
 "click cancel instead"
-msgstr "Vous n'avez rien changé dans les paramètres de ce domaine. Si c'est ce que vous souhaitez cliquez plutôt sur 'annuler'"
+msgstr ""
 
 #: ../class/m_sympa.php:471
 msgid "This robot does not exist"
-msgstr "Le robot n'existe pas"
+msgstr ""
 
 #: ../class/m_sympa.php:475
 msgid "This domain has pending action, you cannot delete it"
-msgstr "Ce domaine a déjà une action en cours, vous ne pouvez pas l'effacer"
+msgstr ""
 
 #: ../class/m_sympa.php:489
 msgid "Mailing lists (Sympa)"
-msgstr "Listes de discussions (Sympa)"
-
-#~ msgid "Pending creation"
-#~ msgstr "Création en cours"
-
-#~ msgid "Pending destruction"
-#~ msgstr "Destruction en cours"
+msgstr ""
