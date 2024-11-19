@@ -90,7 +90,7 @@ class m_sympa {
         global $db,$msg;
         $r=$this->prefix_list($which);
         reset($r);
-        while (list($key,$val)=each($r)) {
+        foreach($r as $key=>$val) {
             if ($current==$val) $c=" selected=\"selected\""; else $c="";
             echo "<option$c>$val</option>";
         }
