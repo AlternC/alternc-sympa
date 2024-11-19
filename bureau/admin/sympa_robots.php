@@ -70,7 +70,7 @@ if ($quota->cancreate("sympa")) {
 	<?php
 	reset($r);
 	$col=1;
-	while (list($key,$val)=each($r)) {
+	foreach($r as $key=>$val) {
 		$col=3-$col;
 		?>
 		<tr class="lst<?php echo $col; ?>">
