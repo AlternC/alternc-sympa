@@ -1,0 +1,292 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR AlternC Team
+# This file is distributed under the same license as the AlternC package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: AlternC 2.0\n"
+"Report-Msgid-Bugs-To: i18n@alternc.org\n"
+"POT-Creation-Date: 2022-09-04 19:57+0200\n"
+"PO-Revision-Date: 2024-11-30 02:00+0000\n"
+"Last-Translator: தமிழ்நேரம் <anishprabu.t@gmail.com>\n"
+"Language-Team: Tamil <https://hosted.weblate.org/projects/alternc/sympa/ta/>"
+"\n"
+"Language: ta\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 5.9-dev\n"
+
+#: ../admin/menu_sympa.php:33
+msgid "Mailing Lists"
+msgstr "அஞ்சல் பட்டியல்கள்"
+
+#: ../admin/menu_sympa.php:35
+msgid "(with Sympa)"
+msgstr "(சிம்பாவுடன்)"
+
+#: ../admin/sympa_robots.php:31
+msgid ""
+"No domain is installed on your account, you cannot create any mailing list!"
+msgstr ""
+"உங்கள் கணக்கில் எந்த களமும் நிறுவப்படவில்லை, நீங்கள் எந்த அஞ்சல் பட்டியலையும் உருவாக்க முடியாது!"
+
+#: ../admin/sympa_robots.php:33 ../admin/sympa_robots.php:52
+#: ../class/m_sympa.php:35 ../class/m_sympa.php:530
+msgid "Sympa Mailing lists"
+msgstr "சிம்பா அஞ்சல் பட்டியல்கள்"
+
+#: ../admin/sympa_robots.php:61
+msgid "Setup a domain for Sympa mailing-lists"
+msgstr "சிம்பா அஞ்சல்-பட்டியல்களுக்கு ஒரு டொமைனை அமைக்கவும்"
+
+#: ../admin/sympa_robots.php:69
+msgid "Actions"
+msgstr "செயல்கள்"
+
+#: ../admin/sympa_robots.php:69
+msgid "Admin web interface"
+msgstr "நிர்வாகி வலை இடைமுகம்"
+
+#: ../admin/sympa_robots.php:69 ../admin/sympa_robots_del.php:53
+msgid "Domain Name"
+msgstr "டொமைன் பெயர்"
+
+#: ../admin/sympa_robots.php:69
+msgid "Domain Status"
+msgstr "டொமைன் நிலை"
+
+#: ../admin/sympa_robots.php:80
+msgid ""
+"This domain lists management is pending deletion, you can't do anything on it"
+msgstr ""
+"இந்த டொமைன் மேலாண்மை நீக்குதல் நிலுவையில் உள்ளது, நீங்கள் அதில் எதையும் செய்ய முடியாது"
+
+#: ../admin/sympa_robots.php:82
+msgid "sympa_status_"
+msgstr "nice_status_"
+
+#: ../admin/sympa_robots.php:83
+msgid "Delete"
+msgstr "நீக்கு"
+
+#: ../admin/sympa_robots.php:83
+msgid "Edit"
+msgstr "தொகு"
+
+#: ../admin/sympa_robots_add.php:37
+msgid ""
+"You currently have no unused domain for which you can host sympa robots."
+msgstr ""
+"உங்களிடம் தற்போது பயன்படுத்தப்படாத டொமைன் இல்லை, அதற்காக நீங்கள் சிம்பா ரோபோக்களை புரவலன் செய்யலாம்."
+
+#: ../admin/sympa_robots_add.php:43
+msgid "Sympa Mailing-lists, setup of a domain name"
+msgstr "சிம்பா அஞ்சல்-பட்டியல்கள், ஒரு டொமைன் பெயரை அமைத்தல்"
+
+#: ../admin/sympa_robots_add.php:49
+msgid ""
+"If you want to use a domain name to host Sympa mailing-lists, you need to "
+"setup that domain here first. You can use any domain whose emails are hosted "
+"on your account to host mailing lists. You will also need a subdomain to "
+"host your web interface for those lists (eg: lists.example.com)."
+msgstr ""
+"சிம்பா அஞ்சல்-பட்டியல்களை புரவலன் செய்ய நீங்கள் ஒரு டொமைன் பெயரைப் பயன்படுத்த விரும்பினால், நீங்கள் முதலில் அந்த டொமைனை"
+" இங்கே அமைக்க வேண்டும். அஞ்சல் பட்டியல்களை புரவலன் செய்ய உங்கள் கணக்கில் மின்னஞ்சல்கள் புரவலன் செய்யப்பட்ட எந்த "
+"டொமைனையும் நீங்கள் பயன்படுத்தலாம். அந்த பட்டியல்களுக்கு உங்கள் வலை இடைமுகத்தை புரவலன் செய்ய உங்களுக்கு ஒரு துணை டொமைன்"
+" தேவைப்படும் (எ.கா.: பட்டியல்கள்.example.com)."
+
+#: ../admin/sympa_robots_add.php:56
+msgid "Which domain name will host the lists?"
+msgstr "எந்த டொமைன் பெயர் பட்டியல்களை வழங்கும்?"
+
+#: ../admin/sympa_robots_add.php:59
+msgid ""
+"Which subdomain will be used for web access to the Mailing-lists management "
+"interface?"
+msgstr ""
+"அஞ்சல்-பட்டியல்கள் மேலாண்மை இடைமுகத்திற்கான வலை அணுகலுக்கு எந்த துணை டொமைன் பயன்படுத்தப்படும்?"
+
+#: ../admin/sympa_robots_add.php:60 ../admin/sympa_robots_edit.php:69
+msgid "lists"
+msgstr "பட்டியல்கள்"
+
+#: ../admin/sympa_robots_add.php:62 ../admin/sympa_robots_edit.php:71
+msgid "Email of the domain lists super-administrators (1 per line, 1 minimum)"
+msgstr ""
+"டொமைனின் மின்னஞ்சல் சூப்பர் நிர்வாகிகள் (ஒரு வரிக்கு 1, 1 குறைந்தபட்சம்)"
+
+#: ../admin/sympa_robots_add.php:66
+msgid "Setup that domain to host Sympa Mailing-lists."
+msgstr "சிம்பா அஞ்சல்-பட்டியல்களை புரவலன் செய்ய அந்த டொமைனை அமைக்கவும்."
+
+#: ../admin/sympa_robots_add.php:67 ../admin/sympa_robots_edit.php:76
+msgid "Cancel"
+msgstr "ரத்துசெய்"
+
+#: ../admin/sympa_robots_del.php:37 ../admin/sympa_robots_edit.php:42
+msgid "Can't find the requested domain on your account!"
+msgstr "உங்கள் கணக்கில் கோரப்பட்ட டொமைனைக் கண்டுபிடிக்க முடியவில்லை!"
+
+#: ../admin/sympa_robots_del.php:43
+msgid "Deleting a Sympa Domain name"
+msgstr "சிம்பா டொமைன் பெயரை நீக்குகிறது"
+
+#: ../admin/sympa_robots_del.php:50
+msgid ""
+"Please confirm that you want to delete the following domain name for Sympa "
+"Mailing Lists."
+msgstr ""
+"சிம்பா அஞ்சல் பட்டியல்களுக்கு பின்வரும் டொமைன் பெயரை நீக்க விரும்புகிறீர்கள் என்பதை உறுதிப்படுத்தவும்."
+
+#: ../admin/sympa_robots_del.php:54
+msgid "Web Interface URL"
+msgstr "வலை இடைமுக முகவரி"
+
+#: ../admin/sympa_robots_del.php:60
+msgid "Yes, delete this domain mailing-lists from Sympa."
+msgstr "ஆம், சிம்பாவிலிருந்து இந்த டொமைன் அஞ்சல்-பட்டியல்களை நீக்கவும்."
+
+#: ../admin/sympa_robots_del.php:61
+msgid "No, don't delete this domain's mailing-lists on Sympa."
+msgstr "இல்லை, சிம்பாவில் இந்த களத்தின் அஞ்சல் பட்டியல்களை நீக்க வேண்டாம்."
+
+#: ../admin/sympa_robots_doadd.php:41
+msgid ""
+"The Sympa domain has been setup. Please wait a few minutes before accessing "
+"its web interface."
+msgstr ""
+"சிம்பா டொமைன் அமைக்கப்பட்டுள்ளது. அதன் வலை இடைமுகத்தை அணுகுவதற்கு சில நிமிடங்கள் காத்திருக்கவும்."
+
+#: ../admin/sympa_robots_doedit.php:49
+msgid ""
+"The Sympa domain has been changed. Please wait a few minutes for the changes "
+"to be paplied."
+msgstr ""
+"சிம்பா டொமைன் மாற்றப்பட்டுள்ளது. மாற்றங்கள் பாப்லைட் செய்ய சில நிமிடங்கள் காத்திருக்கவும்."
+
+#: ../admin/sympa_robots_edit.php:51
+msgid "Sympa Mailing-lists, change the setup of a domain name"
+msgstr "சிம்பா அஞ்சல்-பட்டியல்கள், ஒரு டொமைன் பெயரின் அமைப்பை மாற்றவும்"
+
+#: ../admin/sympa_robots_edit.php:57
+msgid ""
+"This form allows you to change the settings of a domain name for which you "
+"have Sympa mailing-list already setup."
+msgstr ""
+"நீங்கள் ஏற்கனவே அமைக்கப்பட்ட சிம்பா அஞ்சல்-பட்டியல் வைத்திருக்கும் ஒரு டொமைன் பெயரின் அமைப்புகளை மாற்ற இந்த படிவம் "
+"உங்களை அனுமதிக்கிறது."
+
+#: ../admin/sympa_robots_edit.php:65
+msgid "Domain name of the lists"
+msgstr "பட்டியல்களின் டொமைன் பெயர்"
+
+#: ../admin/sympa_robots_edit.php:68
+msgid ""
+"If you change it, the old one will be set as a redirect to the new one."
+"<br>Changing it is not recommended though, once you published it for list "
+"owners or subscribers."
+msgstr ""
+"நீங்கள் அதை மாற்றினால், பழையது புதியதை திருப்பிவிடுவதாக அமைக்கப்படும். <br> அதை மாற்றுவது பட்டியல் உரிமையாளர்கள் "
+"அல்லது சந்தாதாரர்களுக்காக வெளியிட்டவுடன் பரிந்துரைக்கப்படவில்லை."
+
+#: ../admin/sympa_robots_edit.php:68
+msgid "Subdomain used for web access to the Mailing-lists management interface"
+msgstr ""
+"அஞ்சல்-பட்டியல்கள் மேலாண்மை இடைமுகத்திற்கான வலை அணுகலுக்கு பயன்படுத்தப்படும் துணை டொமைன்"
+
+#: ../admin/sympa_robots_edit.php:71
+msgid ""
+"You can change this list as you like. If you add someone whose email is not "
+"yet enrolled in the server, <br>this person can create an account via the "
+"web interface to access its listmasters privileges"
+msgstr ""
+"நீங்கள் விரும்பியபடி இந்த பட்டியலை மாற்றலாம். சேவையகத்தில் இன்னும் பதிவு செய்யப்படாத மின்னஞ்சலை நீங்கள் சேர்த்தால், "
+"<br> இந்த நபர் அதன் பட்டியல் மாச்டர்ச் சலுகைகளை அணுக வலை இடைமுகம் வழியாக ஒரு கணக்கை உருவாக்க முடியும்"
+
+#: ../admin/sympa_robots_edit.php:75
+msgid "Edit this domain's Sympa settings."
+msgstr "இந்த களத்தின் சிம்பா அமைப்புகளைத் திருத்தவும்."
+
+#: ../class/m_sympa.php:46
+msgid "sympa_status_CREATE"
+msgstr "nice_status_create"
+
+#: ../class/m_sympa.php:46
+msgid "sympa_status_DELETE"
+msgstr "nice_status_delete"
+
+#: ../class/m_sympa.php:46
+msgid "sympa_status_DELETING"
+msgstr "sympa_status_deleting"
+
+#: ../class/m_sympa.php:46
+msgid "sympa_status_OK"
+msgstr "nice_status_ok"
+
+#: ../class/m_sympa.php:46
+msgid "sympa_status_REGENERATE"
+msgstr "nice_status_regenate"
+
+#: ../class/m_sympa.php:129
+msgid "This list robot does not exist"
+msgstr "இந்த பட்டியல் ரோபோ இல்லை"
+
+#: ../class/m_sympa.php:150 ../class/m_sympa.php:227
+msgid ""
+"You are not allowed to use sympa mailing-list. Contact your administrator if "
+"needed"
+msgstr ""
+"சிம்பா அஞ்சல் பட்டியலைப் பயன்படுத்த உங்களுக்கு இசைவு இல்லை. தேவைப்பட்டால் உங்கள் நிர்வாகியைத் தொடர்பு கொள்ளுங்கள்"
+
+#: ../class/m_sympa.php:157 ../class/m_sympa.php:234
+msgid "Domain not found"
+msgstr "டொமைன் கிடைக்கவில்லை"
+
+#: ../class/m_sympa.php:161
+msgid "The domain's email is not hosted here"
+msgstr "டொமைனின் மின்னஞ்சல் இங்கே புரவலன் செய்யப்படவில்லை"
+
+#: ../class/m_sympa.php:167
+msgid "This domain is already setup for Sympa"
+msgstr "இந்த டொமைன் ஏற்கனவே சிம்பா அமைக்கப்பட்டுள்ளது"
+
+#: ../class/m_sympa.php:174 ../class/m_sympa.php:246
+msgid "Web Domain not found"
+msgstr "வலை டொமைன் கிடைக்கவில்லை"
+
+#: ../class/m_sympa.php:179 ../class/m_sympa.php:251
+msgid "The sub-domain name is invalid"
+msgstr "துணை டொமைன் பெயர் தவறானது"
+
+#: ../class/m_sympa.php:191 ../class/m_sympa.php:264
+msgid "The super-admin list is empty or invalid. Please check"
+msgstr "சூப்பர்-அட்மின் பட்டியல் காலியாக அல்லது தவறானது. சரிபார்க்கவும்"
+
+#: ../class/m_sympa.php:200 ../class/m_sympa.php:290
+msgid ""
+"Can't set the web sub-domain, please check this name is not already used."
+msgstr ""
+"வலை துணை டொமைனை அமைக்க முடியாது, தயவுசெய்து இந்த பெயர் ஏற்கனவே பயன்படுத்தப்படவில்லை என்பதை சரிபார்க்கவும்."
+
+#: ../class/m_sympa.php:272
+msgid ""
+"You didn't change any setting for this domain, if that's what you want, "
+"click cancel instead"
+msgstr ""
+"இந்த டொமைனுக்கான எந்த அமைப்பையும் நீங்கள் மாற்றவில்லை, அதுதான் நீங்கள் விரும்பினால், அதற்கு பதிலாக ரத்துசெய் என்பதைக் "
+"சொடுக்கு செய்க"
+
+#: ../class/m_sympa.php:471
+msgid "This robot does not exist"
+msgstr "இந்த ரோபோ இல்லை"
+
+#: ../class/m_sympa.php:475
+msgid "This domain has pending action, you cannot delete it"
+msgstr "இந்த டொமைன் நிலுவையில் உள்ளது, நீங்கள் அதை நீக்க முடியாது"
+
+#: ../class/m_sympa.php:489
+msgid "Mailing lists (Sympa)"
+msgstr "அஞ்சல் பட்டியல்கள் (சிம்பா)"
