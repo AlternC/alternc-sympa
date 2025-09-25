@@ -1,27 +1,26 @@
-# Alternc-sympa translation file
-# Copyright (C) 2022 AlternC Team
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR AlternC Team
 # This file is distributed under the same license as the AlternC package.
-# Benjamin Sonntag <benjamin@octopuce.fr>, 2022
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: AlternC 3.0\n"
+"Project-Id-Version: AlternC 2.0\n"
 "Report-Msgid-Bugs-To: i18n@alternc.org\n"
 "POT-Creation-Date: 2022-09-04 19:57+0200\n"
-"PO-Revision-Date: 2025-09-08 05:01+0000\n"
-"Last-Translator: Alice Randles <coolpic784@gmail.com>\n"
-"Language-Team: English (United States) <https://hosted.weblate.org/projects/"
-"alternc/sympa/en_US/>\n"
-"Language: en_US\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: Automatically generated\n"
+"Language-Team: none\n"
+"Language: uk\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.14-dev\n"
+"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
+"n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
 
 #: ../admin/menu_sympa.php:33
 msgid "Mailing Lists"
-msgstr "Mailing Lists"
+msgstr ""
 
 #: ../admin/menu_sympa.php:35
 msgid "(with Sympa)"
@@ -193,23 +192,23 @@ msgstr ""
 
 #: ../class/m_sympa.php:46
 msgid "sympa_status_CREATE"
-msgstr "Will be created soon"
+msgstr ""
 
 #: ../class/m_sympa.php:46
 msgid "sympa_status_DELETE"
-msgstr "Will be deleted soon"
+msgstr ""
 
 #: ../class/m_sympa.php:46
 msgid "sympa_status_DELETING"
-msgstr "Deleting"
+msgstr ""
 
 #: ../class/m_sympa.php:46
 msgid "sympa_status_OK"
-msgstr "OK"
+msgstr ""
 
 #: ../class/m_sympa.php:46
 msgid "sympa_status_REGENERATE"
-msgstr "Reconfiguration requested"
+msgstr ""
 
 #: ../class/m_sympa.php:129
 msgid "This list robot does not exist"
