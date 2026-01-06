@@ -8,79 +8,85 @@ msgstr ""
 "Project-Id-Version: AlternC 2.0\n"
 "Report-Msgid-Bugs-To: i18n@alternc.org\n"
 "POT-Creation-Date: 2022-09-04 19:57+0200\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Automatically generated\n"
-"Language-Team: none\n"
+"PO-Revision-Date: 2025-12-31 09:01+0000\n"
+"Last-Translator: Максим Горпиніч <gorpinicmaksim0@gmail.com>\n"
+"Language-Team: Ukrainian <https://hosted.weblate.org/projects/alternc/sympa/"
+"uk/>\n"
 "Language: uk\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
-"n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
+"n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"X-Generator: Weblate 5.15.1\n"
 
 #: ../admin/menu_sympa.php:33
 msgid "Mailing Lists"
-msgstr ""
+msgstr "Списки розсилки"
 
 #: ../admin/menu_sympa.php:35
 msgid "(with Sympa)"
-msgstr ""
+msgstr "(з Sympa)"
 
 #: ../admin/sympa_robots.php:31
 msgid ""
 "No domain is installed on your account, you cannot create any mailing list!"
 msgstr ""
+"На вашому обліковому записі не встановлено домен, ви не можете створити "
+"список розсилки!"
 
 #: ../admin/sympa_robots.php:33 ../admin/sympa_robots.php:52
 #: ../class/m_sympa.php:35 ../class/m_sympa.php:530
 msgid "Sympa Mailing lists"
-msgstr ""
+msgstr "Списки розсилки Sympa"
 
 #: ../admin/sympa_robots.php:61
 msgid "Setup a domain for Sympa mailing-lists"
-msgstr ""
+msgstr "Налаштування домену для списків розсилки Sympa"
 
 #: ../admin/sympa_robots.php:69
 msgid "Actions"
-msgstr ""
+msgstr "Дії"
 
 #: ../admin/sympa_robots.php:69
 msgid "Admin web interface"
-msgstr ""
+msgstr "Веб-інтерфейс адміністратора"
 
 #: ../admin/sympa_robots.php:69 ../admin/sympa_robots_del.php:53
 msgid "Domain Name"
-msgstr ""
+msgstr "Доменне ім'я"
 
 #: ../admin/sympa_robots.php:69
 msgid "Domain Status"
-msgstr ""
+msgstr "Статус домену"
 
 #: ../admin/sympa_robots.php:80
 msgid ""
 "This domain lists management is pending deletion, you can't do anything on it"
-msgstr ""
+msgstr "Цей домен очікує на видалення, ви нічого не можете з ним зробити."
 
 #: ../admin/sympa_robots.php:82
 msgid "sympa_status_"
-msgstr ""
+msgstr "sympa_status_"
 
 #: ../admin/sympa_robots.php:83
 msgid "Delete"
-msgstr ""
+msgstr "Видалити"
 
 #: ../admin/sympa_robots.php:83
 msgid "Edit"
-msgstr ""
+msgstr "Редагувати"
 
 #: ../admin/sympa_robots_add.php:37
 msgid ""
 "You currently have no unused domain for which you can host sympa robots."
 msgstr ""
+"Наразі у вас немає невикористаних доменів, на яких можна розмістити роботів "
+"sympa."
 
 #: ../admin/sympa_robots_add.php:43
 msgid "Sympa Mailing-lists, setup of a domain name"
-msgstr ""
+msgstr "Списки розсилки Sympa, налаштування доменного імені"
 
 #: ../admin/sympa_robots_add.php:49
 msgid ""
@@ -89,84 +95,102 @@ msgid ""
 "on your account to host mailing lists. You will also need a subdomain to "
 "host your web interface for those lists (eg: lists.example.com)."
 msgstr ""
+"Якщо ви хочете використовувати доменне ім'я для розміщення списків розсилки "
+"Sympa, вам спочатку потрібно налаштувати цей домен тут. Ви можете "
+"використовувати будь-який домен, електронні листи якого розміщено у вашому "
+"обліковому записі, для розміщення списків розсилки. Вам також знадобиться "
+"піддомен для розміщення вашого веб-інтерфейсу для цих списків (наприклад: "
+"lists.example.com)."
 
 #: ../admin/sympa_robots_add.php:56
 msgid "Which domain name will host the lists?"
-msgstr ""
+msgstr "Яке доменне ім'я розміщуватиме списки?"
 
 #: ../admin/sympa_robots_add.php:59
 msgid ""
 "Which subdomain will be used for web access to the Mailing-lists management "
 "interface?"
 msgstr ""
+"Який піддомен буде використовуватися для веб-доступу до інтерфейсу керування "
+"списками розсилки?"
 
 #: ../admin/sympa_robots_add.php:60 ../admin/sympa_robots_edit.php:69
 msgid "lists"
-msgstr ""
+msgstr "списки"
 
 #: ../admin/sympa_robots_add.php:62 ../admin/sympa_robots_edit.php:71
 msgid "Email of the domain lists super-administrators (1 per line, 1 minimum)"
 msgstr ""
+"Електронна адреса домену містить список суперадміністраторів (по одному на "
+"рядок, мінімум 1)"
 
 #: ../admin/sympa_robots_add.php:66
 msgid "Setup that domain to host Sympa Mailing-lists."
-msgstr ""
+msgstr "Налаштуйте цей домен для розміщення списків розсилки Sympa."
 
 #: ../admin/sympa_robots_add.php:67 ../admin/sympa_robots_edit.php:76
 msgid "Cancel"
-msgstr ""
+msgstr "Скасувати"
 
 #: ../admin/sympa_robots_del.php:37 ../admin/sympa_robots_edit.php:42
 msgid "Can't find the requested domain on your account!"
-msgstr ""
+msgstr "Не вдається знайти запитуваний домен у вашому обліковому записі!"
 
 #: ../admin/sympa_robots_del.php:43
 msgid "Deleting a Sympa Domain name"
-msgstr ""
+msgstr "Видалення доменного імені Sympa"
 
 #: ../admin/sympa_robots_del.php:50
 msgid ""
 "Please confirm that you want to delete the following domain name for Sympa "
 "Mailing Lists."
 msgstr ""
+"Будь ласка, підтвердіть, що ви хочете видалити наступне доменне ім'я для "
+"списків розсилки Sympa."
 
 #: ../admin/sympa_robots_del.php:54
 msgid "Web Interface URL"
-msgstr ""
+msgstr "URL-адреса веб-інтерфейсу"
 
 #: ../admin/sympa_robots_del.php:60
 msgid "Yes, delete this domain mailing-lists from Sympa."
-msgstr ""
+msgstr "Так, видалити списки розсилки цього домену з Sympa."
 
 #: ../admin/sympa_robots_del.php:61
 msgid "No, don't delete this domain's mailing-lists on Sympa."
-msgstr ""
+msgstr "Ні, не видаляти списки розсилки цього домену на Sympa."
 
 #: ../admin/sympa_robots_doadd.php:41
 msgid ""
 "The Sympa domain has been setup. Please wait a few minutes before accessing "
 "its web interface."
 msgstr ""
+"Домен Sympa налаштовано. Будь ласка, зачекайте кілька хвилин, перш ніж "
+"отримати доступ до його веб-інтерфейсу."
 
 #: ../admin/sympa_robots_doedit.php:49
 msgid ""
 "The Sympa domain has been changed. Please wait a few minutes for the changes "
 "to be paplied."
 msgstr ""
+"Домен Sympa змінено. Будь ласка, зачекайте кілька хвилин, поки зміни "
+"набудуть чинності."
 
 #: ../admin/sympa_robots_edit.php:51
 msgid "Sympa Mailing-lists, change the setup of a domain name"
-msgstr ""
+msgstr "Списки розсилки Sympa, зміна налаштувань доменного імені"
 
 #: ../admin/sympa_robots_edit.php:57
 msgid ""
 "This form allows you to change the settings of a domain name for which you "
 "have Sympa mailing-list already setup."
 msgstr ""
+"Ця форма дозволяє вам змінити налаштування доменного імені, для якого у вас "
+"вже налаштовано список розсилки Sympa."
 
 #: ../admin/sympa_robots_edit.php:65
 msgid "Domain name of the lists"
-msgstr ""
+msgstr "Доменне ім'я списків"
 
 #: ../admin/sympa_robots_edit.php:68
 msgid ""
@@ -174,10 +198,15 @@ msgid ""
 "<br>Changing it is not recommended though, once you published it for list "
 "owners or subscribers."
 msgstr ""
+"Якщо ви зміните його, старий буде встановлено як перенаправлення на "
+"новий.<br>Однак змінювати його не рекомендується після публікації для "
+"власників списків розсилки або підписників."
 
 #: ../admin/sympa_robots_edit.php:68
 msgid "Subdomain used for web access to the Mailing-lists management interface"
 msgstr ""
+"Субдомен, що використовується для веб-доступу до інтерфейсу керування "
+"списками розсилки"
 
 #: ../admin/sympa_robots_edit.php:71
 msgid ""
@@ -185,84 +214,95 @@ msgid ""
 "yet enrolled in the server, <br>this person can create an account via the "
 "web interface to access its listmasters privileges"
 msgstr ""
+"Ви можете змінювати цей список на свій розсуд. Якщо ви додасте когось, чия "
+"електронна адреса ще не зареєстрована на сервері, <br>ця особа зможе "
+"створити обліковий запис через веб-інтерфейс, щоб отримати доступ до своїх "
+"привілеїв адміністратора списку"
 
 #: ../admin/sympa_robots_edit.php:75
 msgid "Edit this domain's Sympa settings."
-msgstr ""
+msgstr "Змінити налаштування Sympa цього домену."
 
 #: ../class/m_sympa.php:46
 msgid "sympa_status_CREATE"
-msgstr ""
+msgstr "sympa_status_CREATE"
 
 #: ../class/m_sympa.php:46
 msgid "sympa_status_DELETE"
-msgstr ""
+msgstr "sympa_status_DELETE"
 
 #: ../class/m_sympa.php:46
 msgid "sympa_status_DELETING"
-msgstr ""
+msgstr "sympa_status_DELETING"
 
 #: ../class/m_sympa.php:46
 msgid "sympa_status_OK"
-msgstr ""
+msgstr "sympa_status_OK"
 
 #: ../class/m_sympa.php:46
 msgid "sympa_status_REGENERATE"
-msgstr ""
+msgstr "sympa_status_REGENERATE"
 
 #: ../class/m_sympa.php:129
 msgid "This list robot does not exist"
-msgstr ""
+msgstr "Цього робота зі списків не існує"
 
 #: ../class/m_sympa.php:150 ../class/m_sympa.php:227
 msgid ""
 "You are not allowed to use sympa mailing-list. Contact your administrator if "
 "needed"
 msgstr ""
+"Вам не дозволено використовувати список розсилки sympa. За потреби "
+"зверніться до адміністратора."
 
 #: ../class/m_sympa.php:157 ../class/m_sympa.php:234
 msgid "Domain not found"
-msgstr ""
+msgstr "Домен не знайдено"
 
 #: ../class/m_sympa.php:161
 msgid "The domain's email is not hosted here"
-msgstr ""
+msgstr "Електронна адреса домену не розміщена тут"
 
 #: ../class/m_sympa.php:167
 msgid "This domain is already setup for Sympa"
-msgstr ""
+msgstr "Цей домен вже налаштовано для Sympa"
 
 #: ../class/m_sympa.php:174 ../class/m_sympa.php:246
 msgid "Web Domain not found"
-msgstr ""
+msgstr "Веб-домен не знайдено"
 
 #: ../class/m_sympa.php:179 ../class/m_sympa.php:251
 msgid "The sub-domain name is invalid"
-msgstr ""
+msgstr "Ім'я субдомену недійсне"
 
 #: ../class/m_sympa.php:191 ../class/m_sympa.php:264
 msgid "The super-admin list is empty or invalid. Please check"
 msgstr ""
+"Список супер-адміністраторів порожній або недійсний. Перевірте, будь ласка."
 
 #: ../class/m_sympa.php:200 ../class/m_sympa.php:290
 msgid ""
 "Can't set the web sub-domain, please check this name is not already used."
 msgstr ""
+"Не вдається налаштувати веб-субдомен, перевірте, чи це ім'я ще не "
+"використовується."
 
 #: ../class/m_sympa.php:272
 msgid ""
 "You didn't change any setting for this domain, if that's what you want, "
 "click cancel instead"
 msgstr ""
+"Ви не змінювали жодних налаштувань для цього домену. Якщо вам це потрібно, "
+"натисніть кнопку «Скасувати»."
 
 #: ../class/m_sympa.php:471
 msgid "This robot does not exist"
-msgstr ""
+msgstr "Цього робота не існує"
 
 #: ../class/m_sympa.php:475
 msgid "This domain has pending action, you cannot delete it"
-msgstr ""
+msgstr "Цей домен має очікує на видалення, ви не можете його видалити"
 
 #: ../class/m_sympa.php:489
 msgid "Mailing lists (Sympa)"
-msgstr ""
+msgstr "Списки розсилки (Sympa)"
