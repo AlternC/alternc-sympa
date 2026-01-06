@@ -338,7 +338,6 @@ class m_sympa {
         }
         foreach($deletes as $delete) {
             $this->cron_delete_robot($delete);
-            
             $somethingchanged=true;
             $db->query("DELETE FROM sympa WHERE id=".$delete["id"].";"); 
         }
@@ -350,7 +349,7 @@ class m_sympa {
             $edits[]=$db->Record;
         }
         foreach($edits as $edit) {
-            $this->cron_create_robot($edit,true /* this is an edit */ );
+            $this->cron_create_robot($edit);
             $somethingchanged=true;
             $code="OK";
             $result="";
@@ -359,7 +358,7 @@ class m_sympa {
 
         
         if ($somethingchanged) {
-            exec("postmap /etc/sympa/robots.aliases");
+            $this->update_robots_aliases();
             $this->restart_sympa();
         }
         
@@ -371,7 +370,7 @@ class m_sympa {
      * and is in charge of effectively create a virtual robot for sympa
      * @param $create array a hash with all informations from sympa table.  
      */
-    private function cron_create_robot($create,$isanedit=false) {
+    private function cron_create_robot($create) {
         $weburl = $create["websub"].(($create["websub"])?".":"").$create["web"];
         syslog(LOG_INFO,"Creating Sympa virtual robot for host ".$create["mail"]." and web interface https://".$weburl);
 
@@ -394,15 +393,6 @@ title   Sympa Mailing List Service
 default_home  home
 create_list listmaster
 ");
-        
-        // we only add the robots.aliases on robot creation, not on robot edit.
-        if (!$isanedit) {
-            $f=fopen("/etc/sympa/robots.aliases","ab");
-            fputs($f,"sympa@".$create["mail"]." sympa:\n");
-            fclose($f);
-            // and update the postfix map : IMPORTANT
-            exec("/usr/sbin/postmap /etc/sympa/robots.aliases");
-        }
     }
 
 
@@ -410,6 +400,7 @@ create_list listmaster
     /* ----------------------------------------------------------------- */
     /** This function is launched by the cron_update function above
      * and is in charge of effectively destroy a virtual robot for sympa
+     * MUST be launched as root 
      * @param $delete array a hash with all informations from sympa table.  
      */
     private function cron_delete_robot($delete) {
@@ -418,21 +409,27 @@ create_list listmaster
         
         exec("rm -rf ".escapeshellarg("/etc/sympa/".$delete["mail"]));
         exec("rm -rf ".escapeshellarg("/var/lib/sympa/list_data/".$delete["mail"]));
-
-        // remove line from robots.aliases for this domain
-        $f=fopen("/etc/sympa/robots.aliases","rb");
-        $g=fopen("/etc/sympa/robots.aliases.new","rb");
-        while ($s=fgets($f,8192)) {
-            if (trim($s)!="sympa@".$delete["mail"]." sympa:") fputs($g,$s);
-        }
-        fclose($f);
-        fclose($g);
-        rename("/etc/sympa/robots.aliases.new","/etc/sympa/robots.aliases");
-        // and update the postfix map : IMPORTANT
-        exec("/usr/sbin/postmap /etc/sympa/robots.aliases");
     }
 
+
     
+    /* ----------------------------------------------------------------- */
+    /** update the robots.aliases and launch postmap.
+     * MUST be launched as root 
+     */ 
+    private function update_robots_aliases() {
+        global $db;
+        $db->query("SELECT mail FROM sympa WHERE sympa_action !='DELETE';");
+        $f=fopen("/etc/sympa/robots.aliases.new","wb");
+        while ($db->next_record()) {
+            fputs($f,"sympa@".$db->Record["mail"]." sympa:\n");
+        }
+        fclose($f);
+        rename("/etc/sympa/robots.aliases.new","/etc/sympa/robots.aliases");
+        exec("/usr/sbin/postmap /etc/sympa/robots.aliases");
+    }
+    
+
     /* ----------------------------------------------------------------- */
     /** Restart all sympa services
      * MUST be launched as root of course
