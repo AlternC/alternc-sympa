@@ -1,3 +1,10 @@
+alternc-sympa (0.1.5) stretch buster bullseye bookworm; urgency=low
+
+  * Fix(#13) : fixing 3.5.* installation
+  * Translation : id language imported from weblate
+
+ -- Camille Lafitte <alternc@webelys.com>  Wed, 29 Apr 2026 14:03:00 +0200
+
 alternc-sympa (0.1.4) stretch buster bullseye bookworm; urgency=low
 
   * Fix : fixing the robots.aliases update failing by replacing it with a full replace
