@@ -22,4 +22,4 @@ CREATE TABLE IF NOT EXISTS alternc_status (name VARCHAR(48) NOT NULL DEFAULT '',
 INSERT IGNORE INTO alternc_status SET name='alternc-sympa_version',value='1.0.sql';
 
 -- the domaine type of Sympa for hosted virtual robots is only accessible to admins, simple users have no direct control over it, unless via the sympa alternc panel webpage
-INSERT IGNORE INTO `domaines_type` VALUES ('sympa-robot','Web Sympa','NONE','%SUB% IN A @@PUBLIC_IP@@','txt,defmx,defmx2,mx,mx2','ADMIN',0,0,1,0,0);
+INSERT IGNORE INTO `domaines_type` (`name`,`description`,`target`,`entry`,`compatibility`,`enable`,`only_dns`,`need_dns`,`advanced`,`create_tmpdir`,`create_targetdir`) VALUES ('sympa-robot','Web Sympa','NONE','%SUB% IN A @@PUBLIC_IP@@','txt,defmx,defmx2,mx,mx2','ADMIN',0,0,1,0,0);
