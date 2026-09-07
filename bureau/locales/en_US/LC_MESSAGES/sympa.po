@@ -8,8 +8,9 @@ msgstr ""
 "Project-Id-Version: AlternC 3.0\n"
 "Report-Msgid-Bugs-To: i18n@alternc.org\n"
 "POT-Creation-Date: 2022-09-04 19:57+0200\n"
-"PO-Revision-Date: 2025-09-08 05:01+0000\n"
-"Last-Translator: Alice Randles <coolpic784@gmail.com>\n"
+"PO-Revision-Date: 2026-06-23 21:01+0000\n"
+"Last-Translator: Hosted Weblate user 150744 "
+"<wheresalice@users.noreply.hosted.weblate.org>\n"
 "Language-Team: English (United States) <https://hosted.weblate.org/projects/"
 "alternc/sympa/en_US/>\n"
 "Language: en_US\n"
@@ -17,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.14-dev\n"
+"X-Generator: Weblate 2026.7.dev0\n"
 
 #: ../admin/menu_sympa.php:33
 msgid "Mailing Lists"
@@ -25,25 +26,26 @@ msgstr "Mailing Lists"
 
 #: ../admin/menu_sympa.php:35
 msgid "(with Sympa)"
-msgstr ""
+msgstr "(with Sympa)"
 
 #: ../admin/sympa_robots.php:31
 msgid ""
 "No domain is installed on your account, you cannot create any mailing list!"
 msgstr ""
+"No domain is installed on your account, you cannot create any mailing list!"
 
 #: ../admin/sympa_robots.php:33 ../admin/sympa_robots.php:52
 #: ../class/m_sympa.php:35 ../class/m_sympa.php:530
 msgid "Sympa Mailing lists"
-msgstr ""
+msgstr "Sympa Mailing lists"
 
 #: ../admin/sympa_robots.php:61
 msgid "Setup a domain for Sympa mailing-lists"
-msgstr ""
+msgstr "Setup a domain for Sympa mailing-lists"
 
 #: ../admin/sympa_robots.php:69
 msgid "Actions"
-msgstr ""
+msgstr "Actions"
 
 #: ../admin/sympa_robots.php:69
 msgid "Admin web interface"
@@ -78,10 +80,11 @@ msgstr ""
 msgid ""
 "You currently have no unused domain for which you can host sympa robots."
 msgstr ""
+"You currently have no unused domain for which you can host sympa robots."
 
 #: ../admin/sympa_robots_add.php:43
 msgid "Sympa Mailing-lists, setup of a domain name"
-msgstr ""
+msgstr "Sympa Mailing-lists, setup of a domain name"
 
 #: ../admin/sympa_robots_add.php:49
 msgid ""
@@ -93,7 +96,7 @@ msgstr ""
 
 #: ../admin/sympa_robots_add.php:56
 msgid "Which domain name will host the lists?"
-msgstr ""
+msgstr "Which domain name will host the lists?"
 
 #: ../admin/sympa_robots_add.php:59
 msgid ""
@@ -115,25 +118,27 @@ msgstr ""
 
 #: ../admin/sympa_robots_add.php:67 ../admin/sympa_robots_edit.php:76
 msgid "Cancel"
-msgstr ""
+msgstr "Cancel"
 
 #: ../admin/sympa_robots_del.php:37 ../admin/sympa_robots_edit.php:42
 msgid "Can't find the requested domain on your account!"
-msgstr ""
+msgstr "Can't find the requested domain on your account!"
 
 #: ../admin/sympa_robots_del.php:43
 msgid "Deleting a Sympa Domain name"
-msgstr ""
+msgstr "Deleting a Sympa Domain name"
 
 #: ../admin/sympa_robots_del.php:50
 msgid ""
 "Please confirm that you want to delete the following domain name for Sympa "
 "Mailing Lists."
 msgstr ""
+"Please confirm that you want to delete the following domain name for Sympa "
+"Mailing Lists."
 
 #: ../admin/sympa_robots_del.php:54
 msgid "Web Interface URL"
-msgstr ""
+msgstr "Web Interface URL"
 
 #: ../admin/sympa_robots_del.php:60
 msgid "Yes, delete this domain mailing-lists from Sympa."
